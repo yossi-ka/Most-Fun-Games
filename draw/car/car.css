@@ -1,0 +1,107 @@
+main {
+  display: flex;
+  justify-content: center;
+}
+.bodyUp {
+  height: 0px;
+  width: 250px;
+  border-bottom: 150px solid black;
+  border-left: transparent 155px solid;
+  border-right: transparent 155px solid;
+}
+.windowL {
+  position: relative;
+  top: 5px;
+  right: 147px;
+  height: 0px;
+  width: 50px;
+  border-bottom: 145px solid white;
+  border-left: transparent 150px solid;
+}
+.windowR {
+  position: relative;
+  bottom: 140px;
+  left: 198px;
+  height: 0px;
+  width: 50px;
+  border-bottom: 145px solid white;
+  border-right: transparent 150px solid;
+}
+.windowM {
+  position: relative;
+  height: 144px;
+  width: 133px;
+  background-color: white;
+  left: 59px;
+  bottom: 284px;
+}
+.wheelL {
+  position: relative;
+  height: 100px;
+  width: 100px;
+  border: 5px solid black;
+  border-radius: 50%;
+  left: 110px;
+  top: 100px;
+  /* z-index: 1; */
+  background-color: white;
+}
+.wheelR {
+  position: relative;
+  height: 100px;
+  width: 100px;
+  border: 5px solid black;
+  border-radius: 50%;
+  left: 430px;
+  bottom:  10px;
+  /* z-index: 1; */
+  background-color: white;
+}
+.bodyDown {
+  position: absolute;
+  top: 233px;
+  height: 150px;
+  width: 650px;
+  border: black 5px solid;
+}
+footer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 250px;
+  text-align: center;
+  color: rgb(155, 132, 0);
+}
+.red {
+  background-color: red;
+}
+.blue {
+  background-color: blue;
+}
+.green {
+  background-color: green;
+}
+.yellow {
+  background-color: yellow;
+}
+.black {
+  background-color: black;
+}
+.white {
+  background-color: white;
+}
+.purple {
+  background-color: purple;
+}
+.orange {
+  background-color: orange;
+}
+.brown {
+  background-color: brown;
+}
+.color {
+  width: 50px;
+  height: 50px;
+  border: black 1px solid;
+  display: inline-block;
+  margin: 10px;
+}
