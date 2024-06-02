@@ -1,0 +1,79 @@
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+:root {
+  --boardSize: 400px;
+}
+body {
+  display: flex;
+  justify-content: center;
+}
+.youre {
+  padding: 50px 80px;
+  font-size: 30px;
+  top: 100px;
+  background-color: rgb(240, 184, 184);
+  position: absolute;
+  text-align: center;
+}
+.youre button {
+  color: red;
+  border-radius: 25px;
+  font-size: 30px;
+  font-weight: 800;
+  background-color: white;
+  padding: 15px 25px;
+  margin: 20px 30px;
+}
+.board {
+  margin-top: 50px;
+  display: grid;
+  width: var(--boardSize);
+  height: var(--boardSize);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  border: 5px solid black;
+}
+.cell {
+  border: 3px solid blue;
+  text-align: center;
+  font-size: 90px;
+}
+.alerts {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+}
+.youWin {
+  display: none;
+  width: 700px;
+  position: absolute;
+  padding: 30px;
+  top: 120px;
+  background-color: greenyellow;
+  border: solid green 5px;
+  text-align: center;
+  font-size: 45px;
+}
+.youFailed {
+  display: none;
+  width: 700px;
+  position: absolute;
+  top: 120px;
+  padding: 30px;
+  background-color: pink;
+  border: solid red 5px;
+  text-align: center;
+  font-size: 45px;
+}
+.youFailed button,
+.youWin button {
+  padding: 15px 25px;
+  border: 3px solid blue;
+  background-color: aqua;
+  color: blue;
+  font-size: 20px;
+  font-weight: 600;
+}
