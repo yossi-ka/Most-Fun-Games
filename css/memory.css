@@ -17,5 +17,10 @@ body {
   grid-template-rows: repeat(4, 1fr);
 }
 .card {
+  cursor: pointer;
+  font-size: 50px;
+  color: aqua;
+  text-align: center;
+  padding: 45px 0px;
   border: blue solid 1px;
 }
