@@ -41,10 +41,9 @@ for (let i = 0; i < 16; i++) {
   images[getNum()].setAttribute("src", animalImages[i]);
 }
 //  game
-let counter = 0; //  how many cards are discover
 let left = 10; //  how many times left to play
 const leftX = document.querySelector("h1");
-leftX.textContent = "left " + left + " times";
+leftX.textContent = left + " times left";
 let arrImg = [];
 game.addEventListener("click", discover);
 function discover(event) {
@@ -58,12 +57,11 @@ function discover(event) {
   //  switchs the card
   currentP.style.display = "none";
   images[currentIndex].style.display = "block";
-  //  update the num of cards that discover
-  counter++;
+
   //  save in array the src of the image
   arrImg.push(images[currentIndex].getAttribute("src"));
 
-  if (counter === 2) {
+  if (arrImg.length === 2) {
     if (arrImg[0] === arrImg[1]) {
       know(arrImg[0]);
     } else {
@@ -76,19 +74,39 @@ function discover(event) {
 }
 //  if you know
 function know(srcImg) {
-    
+  const side = document.querySelector(".side");
+  const imgSide = side.querySelectorAll("img");
+  let i = 0;
+  for (i = 0; i < 8; i++) {
+    if (imgSide[i].getAttribute("src") === "") {
+      imgSide[i].style.display = "block";
+      imgSide[i].setAttribute("src", srcImg);
+      break;
+    }
+  }
+  for (let j = 0; j < 16; j++) {
+    if (images[j].getAttribute("src") === srcImg) {
+      images[j].style.display = "none";
+      p[j].style.display = "block";
+      p[j].textContent = "";
+    }
+  }
+  if (imgSide[7].getAttribute("src") != "") youWin();
 }
 //  cover the cards if you dont know
 document.querySelector(".cover").addEventListener("click", function () {
-  counter = 0;
   game.addEventListener("click", discover);
+  let count = 0;
   for (let i = 0; i < 16; i++) {
     if (p[i].textContent === "click" && p[i].style.display === "none") {
       p[i].style.display = "block";
       images[i].style.display = "none";
+      count = 1;
     }
   }
-  leftX.textContent = --left;
+  if (count === 1) {
+    leftX.textContent = --left + " times left";
+  }
   document.querySelector(".cover").style.backgroundColor = "white";
   if (left == 0) youFailed();
 });
@@ -100,3 +118,9 @@ function youFailed() {
 function youWin() {
   document.querySelector(".youWin").style.display = "block";
 }
+//  play again
+document.querySelectorAll(".again").forEach((el) => {
+  el.addEventListener("click", () => {
+    location.reload();
+  });
+});
