@@ -42,9 +42,10 @@ for (let i = 0; i < 16; i++) {
 }
 //  game
 let counter = 0; //  how many cards are discover
-let left = 10; //  how many times are left to play
+let left = 10; //  how many times left to play
 const leftX = document.querySelector("h1");
-leftX.textContent = left;
+leftX.textContent = "left " + left + " times";
+let arrImg = [];
 game.addEventListener("click", discover);
 function discover(event) {
   let currentP = event.target;
@@ -54,15 +55,31 @@ function discover(event) {
     currentP.textContent === ""
   )
     return;
+  //  switchs the card
   currentP.style.display = "none";
   images[currentIndex].style.display = "block";
+  //  update the num of cards that discover
   counter++;
+  //  save in array the src of the image
+  arrImg.push(images[currentIndex].getAttribute("src"));
+
   if (counter === 2) {
-    game.removeEventListener("click", discover);
+    if (arrImg[0] === arrImg[1]) {
+      know(arrImg[0]);
+    } else {
+      game.removeEventListener("click", discover);
+      document.querySelector(".cover").style.backgroundColor =
+        "rgb(192, 192, 142)";
+    }
+    arrImg = [];
   }
 }
-document.querySelector("button").addEventListener("click", cover);
-function cover() {
+//  if you know
+function know(srcImg) {
+    
+}
+//  cover the cards if you dont know
+document.querySelector(".cover").addEventListener("click", function () {
   counter = 0;
   game.addEventListener("click", discover);
   for (let i = 0; i < 16; i++) {
@@ -72,11 +89,14 @@ function cover() {
     }
   }
   leftX.textContent = --left;
+  document.querySelector(".cover").style.backgroundColor = "white";
   if (left == 0) youFailed();
-}
+});
+//  you failed
 function youFailed() {
   document.querySelector(".youFailed").style.display = "block";
 }
+//  you win
 function youWin() {
   document.querySelector(".youWin").style.display = "block";
 }
