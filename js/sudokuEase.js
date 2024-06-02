@@ -68,7 +68,7 @@ function insert(event) {
     }
   }
 }
-//  buttom settings
+//  buttons settings
 document.querySelector(".reset").addEventListener("click", () => {
   location.reload();
 });
