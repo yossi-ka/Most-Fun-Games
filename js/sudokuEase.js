@@ -68,7 +68,12 @@ function insert(event) {
     }
   }
 }
-
+//  buttom settings
 document.querySelector(".reset").addEventListener("click", () => {
   location.reload();
+});
+document.querySelector(".solution").addEventListener("click", () => {
+  for (let i = 0; i < cells.length; i++) {
+    cells[i].textContent = sudokuArr[i];
+  }
 });
