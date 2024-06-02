@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+body {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+.game {
+  width: 650px;
+  height: 650px;
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+.card {
+  border: blue solid 1px;
+}
