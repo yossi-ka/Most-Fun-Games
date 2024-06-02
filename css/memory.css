@@ -20,7 +20,15 @@ body {
   cursor: pointer;
   font-size: 50px;
   color: aqua;
-  text-align: center;
-  padding: 45px 0px;
   border: blue solid 1px;
+}
+.card img {
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.card p {
+  position: absolute;
+  text-align: center;
+  padding: 45px 30px;
 }

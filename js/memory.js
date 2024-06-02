@@ -28,10 +28,25 @@ const animalImages = [
 const game = document.querySelector(".game");
 const cards = game.querySelectorAll(".card");
 const images = game.querySelectorAll("img");
+const p = game.querySelectorAll("p");
+//  put images randomly
 function getNum() {
   let x = Math.floor(Math.random() * 16);
-  while (images[x].getAttribute("img") != "") {
+  while (images[x].getAttribute("src") != "") {
     x = Math.floor(Math.random() * 16);
   }
   return x;
+}
+for (let i = 0; i < 16; i++) {
+  images[getNum()].setAttribute("src", animalImages[i]);
+}
+//  game
+let left = 10;
+document.querySelector("h1").textContent = left;
+game.addEventListener("click", swich);
+function swich(event) {
+  let currentP = event.target;
+  let currentIndex = Array.from(p).indexOf(currentP);
+  currentP.style.display = "none";
+  images[currentIndex].style.display = "block";
 }
