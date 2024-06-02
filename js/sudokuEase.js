@@ -67,5 +67,8 @@ function insert(event) {
       location.classList.remove("false");
     }
   }
-
 }
+
+document.querySelector(".reset").addEventListener("click", () => {
+  location.reload();
+});
