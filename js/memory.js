@@ -25,11 +25,13 @@ const animalImages = [
   cowImg,
   cowImg,
 ];
-const game = document.querySelector(".game")
-const cards = game.querySelectorAll(".card")
-const images = game.querySelectorAll("img")
-function {
-    let x = Math.floor(Math.random() * 16);
-while(images[x].getAttribute("img"))
+const game = document.querySelector(".game");
+const cards = game.querySelectorAll(".card");
+const images = game.querySelectorAll("img");
+function getNum() {
+  let x = Math.floor(Math.random() * 16);
+  while (images[x].getAttribute("img") != "") {
+    x = Math.floor(Math.random() * 16);
+  }
+  return x;
 }
-
