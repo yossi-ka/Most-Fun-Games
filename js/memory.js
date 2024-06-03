@@ -3,7 +3,7 @@ const snakeImg = "../assents/images/snake.png";
 const bearImg = "../assents/images/bear.jpg";
 const lionImg = "../assents/images/lion.jpg";
 const roosterImg = "../assents/images/rooster.jpg";
-const camelImg = "../assents/images/camel.jpg";
+const camelImg = "../assents/images/camel.png";
 const wolfImg = "../assents/images/wolf.webp";
 const cowImg = "../assents/images/cow.webp";
 const dolphinImg = "../assents/images/dolphin.jpg";
@@ -40,10 +40,13 @@ function getNum() {
 for (let i = 0; i < 16; i++) {
   images[getNum()].setAttribute("src", animalImages[i]);
 }
-//  game
-let left = 10; //  how many times left to play
+
+//  how many times left to play
+let left = 10;
 const leftX = document.querySelector("h1");
 leftX.textContent = left + " times left";
+
+//  game
 let arrImg = [];
 game.addEventListener("click", discover);
 function discover(event) {
@@ -66,8 +69,7 @@ function discover(event) {
       know(arrImg[0]);
     } else {
       game.removeEventListener("click", discover);
-      document.querySelector(".cover").style.backgroundColor =
-        "rgb(192, 192, 142)";
+      document.querySelector(".cover").style.border = "solid 3px red";
     }
     arrImg = [];
   }
@@ -107,15 +109,17 @@ document.querySelector(".cover").addEventListener("click", function () {
   if (count === 1) {
     leftX.textContent = --left + " times left";
   }
-  document.querySelector(".cover").style.backgroundColor = "white";
+  document.querySelector(".cover").style.border = "solid 3px white";
   if (left == 0) youFailed();
 });
 //  you failed
 function youFailed() {
   document.querySelector(".youFailed").style.display = "block";
+  game.removeEventListener("click", discover);
 }
 //  you win
 function youWin() {
+  game.removeEventListener("click", discover);
   document.querySelector(".youWin").style.display = "block";
 }
 //  play again

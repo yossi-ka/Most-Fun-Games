@@ -41,11 +41,7 @@ body {
 .side {
   /* border: 3px black solid; */
 /* Reset some default browser styles */
-body,
-div,
-h1,
-p,
-button {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -85,6 +81,7 @@ aside .cover {
   padding: 10px 20px;
   cursor: pointer;
   transition: background-color 0.3s;
+  border: solid 3px white;
 }
 
 aside .cover:hover {
@@ -114,9 +111,6 @@ main {
   position: relative;
   width: 100px;
   height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
 }
 
@@ -127,8 +121,11 @@ main {
 }
 
 .card p {
+  width: 100%;
+  height: 100%;
   font-size: 1.2em;
   color: #333;
+  padding: 37px 30px;
 }
 
 /* Style for the side known cards */
