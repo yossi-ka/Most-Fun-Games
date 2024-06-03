@@ -36,7 +36,7 @@ forms[0].addEventListener("submit", (event) => {
       inputs[0].value === usersArr[i].email &&
       inputs[1].value === usersArr[i].password
     ) {
-      window.location.href = "/pages/games menu.html";
+      window.location.href = "./pages/games-menu.html";
     }
   }
 });
