@@ -14,24 +14,34 @@ main {
   display: none;
 }
 .youre {
-  padding: 50px 80px;
+  /* padding: 50px 80px; */
   position: absolute;
   top: 100px;
-  background-color: rgb(240, 184, 184);
+  background-color: #4caf50;
   text-align: center;
+  border-radius: 12px;
+  box-shadow: black;
 }
 h1 {
+  color: white;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 60px;
+  margin: 50px 80px 0px 80px;
 }
 .youre button {
-  color: red;
-  border-radius: 25px;
-  font-size: 30px;
-  font-weight: 800;
+  width: 100px;
+  height: 100px;
+  color: green;
+  border-radius: 15px;
+  font-size: 50px;
+  font-weight: 500;
   background-color: white;
-  padding: 15px 25px;
-  margin: 20px 30px;
+  margin: 60px 30px;
+  border: none;
+}
+.youre button:hover {
+  background-color: #dde8dd;
+  border: white solid 4px;
 }
 .board {
   margin-top: 50px;
@@ -40,12 +50,13 @@ h1 {
   height: var(--boardSize);
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  border: 5px solid black;
+  border: 5px solid rgb(56, 157, 56);
 }
 .cell {
-  border: 3px solid blue;
+  border: 3px solid rgb(56, 157, 56);
   text-align: center;
   font-size: 90px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .alerts {
   position: absolute;
