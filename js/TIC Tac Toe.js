@@ -3,13 +3,16 @@ let C = "x"; //  Computer
 let P = "o"; //  Person
 const youre = document.querySelector(".youre");
 const youreBtn = youre.querySelectorAll("button");
+const main = document.querySelector("main")
 youreBtn[0].addEventListener("click", () => {
   C = "o";
   P = "x";
+main.style.display="block"
   youre.style.display = "none";
 });
 youreBtn[1].addEventListener("click", () => {
-  youre.style.display = "none";
+main.style.display="block"
+youre.style.display = "none";
 });
 //  setting variabls
 const board = document.querySelector(".board");

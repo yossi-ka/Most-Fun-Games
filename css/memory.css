@@ -1,4 +1,4 @@
-* {
+/* * {
   box-sizing: border-box;
   padding: 0px;
   margin: 0px;
@@ -40,65 +40,141 @@ body {
 }
 .side {
   /* border: 3px black solid; */
-  margin-left: 30px;
+ /* Reset some default browser styles */
+body, div, h1, p, button {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.side div {
-  margin: 5px;
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
+
+/* Style for the aside */
+aside {
+  background-color: #4CAF50;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+aside .left {
+  flex: 1;
+}
+
+aside h1 {
+  font-size: 1.2em;
+  color: white;
+}
+
+aside .cover {
+  background-color: #fff;
+  border: 2px solid #4CAF50;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+aside .cover:hover {
+  background-color: #ddd;
+}
+
+/* Style for the main game area */
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.game {
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  grid-gap: 10px;
+}
+
+.card {
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.card img {
+  display: none;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.card p {
+  font-size: 1.2em;
+  color: #333;
+}
+
+/* Style for the side known cards */
+.side {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+}
+
 .cardKnow {
   width: 50px;
   height: 50px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
 }
+
 .cardKnow img {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   display: none;
 }
-.left {
-  font-size: 20px;
-  display: flex;
-}
-.cover {
-  padding: 15px;
-  font-size: 30px;
-  background-color: white;
-}
-.youWin {
-  width: 1000px;
-  margin-top: 30px;
+
+/* Style for the winning and failing messages */
+.youWin, .youFailed {
   display: none;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  color: green;
-  background-color: greenyellow;
-  font-size: 100px;
-  border: 10px solid green;
-  padding: 50px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 10px;
   text-align: center;
+  z-index: 10;
 }
-.youFailed {
-  width: 1000px;
-  margin-top: 30px;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  color: red;
-  background-color: pink;
-  font-size: 100px;
-  border: 10px solid red;
-  padding: 50px;
-  text-align: center;
+
+.youWin button, .youFailed button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
 }
-.youFailed button,
-.youWin button {
-  border-radius: 15px;
-  border: 3px blue solid;
-  background-color: aqua;
-  color: blue;
-  font-size: 20px;
-  padding: 15px;
-  margin-top: 20px;
-  width: 150px;
+
+.youWin button:hover, .youFailed button:hover {
+  background-color: #45a049;
 }

@@ -1,4 +1,4 @@
-* {
+/* * {
   box-sizing: border-box;
   padding: 0px;
   margin: 0px;
@@ -28,4 +28,64 @@ p {
   font-size: 50px;
   color: rgb(255, 157, 36);
   font-weight: 600;
+} */
+
+
+/* Reset some default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Style the menu items */
+.menu {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 20px;
+  padding: 20px;
+  width: 150px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.menu:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.menu a {
+  text-decoration: none;
+  color: #4CAF50;
+  font-size: 1.2em;
+  display: block;
+}
+
+.menu a p {
+  margin: 0;
+  padding: 10px 0;
+}
+
+.menu a:hover p {
+  text-decoration: underline;
+}
+
+/* Add specific styles for ship and car */
+.menu.ship {
+  background-color: #e0f7fa;
+}
+
+.menu.car {
+  background-color: #fce4ec;
 }

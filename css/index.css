@@ -1,0 +1,109 @@
+/* Reset some default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Style the header */
+header {
+  background-color: #4caf50;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+header .welcome {
+  font-size: 1.5em;
+}
+
+/* Style the main content */
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+main .box {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+main .box h1 {
+  margin-bottom: 20px;
+}
+
+main .box form {
+  margin-bottom: 20px;
+}
+
+main .box label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+main .box input[type="email"],
+main .box input[type="password"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+main .box button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+main .box button:hover {
+  background-color: #45a049;
+}
+
+main .box h2 {
+  margin-top: 20px;
+}
+
+main .box a {
+  color: #4caf50;
+  text-decoration: none;
+}
+
+main .box a:hover {
+  text-decoration: underline;
+}
+
+/* Style the footer */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+footer div {
+  margin: 5px;
+}

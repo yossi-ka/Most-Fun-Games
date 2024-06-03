@@ -5,24 +5,24 @@
 }
 
 /* קו עבה משמאל כל 3 עמודות */
-.cell:nth-child(3n + 1) {
+/* .cell:nth-child(3n + 1) {
   border-left: 3px solid black;
-}
+} */
 
 /* קו עבה מעל כל 3 שורות */
-.cell:nth-child(n + 1):nth-child(-n + 9),
+/* .cell:nth-child(n + 1):nth-child(-n + 9),
 .cell:nth-child(n + 28):nth-child(-n + 36),
 .cell:nth-child(n + 55):nth-child(-n + 63) {
   border-top: 3px solid black;
-}
+} */
 
 /* קו עבה מימין לשורה האחרונה */
-.cell:nth-child(9n) {
+/* .cell:nth-child(9n) {
   border-right: 3px solid black;
-}
+} */
 
 /* קו עבה מתחת לעמודה האחרונה */
-.cell:nth-last-child(-n + 9) {
+/* .cell:nth-last-child(-n + 9) {
   border-bottom: 3px solid black;
 }
 
@@ -32,8 +32,8 @@
 }
 main {
   padding: 30px;
-}
-aside {
+}  */
+/* aside {
   padding: 50px;
 }
 .number {
@@ -60,13 +60,13 @@ button {
   padding: 10px;
   font-size: 40px;
   text-align: center;
-}
-.board {
+} */
+/* .board {
   /* display: flex;
   justify-content: center;
   flex-wrap: wrap;
   width: 630px; */
-  margin: 0px 100px;
+  /* margin: 0px 100px;
   display: grid;
   grid-template-columns: repeat(9, 70px);
   grid-template-rows: repeat(9, 70px);
@@ -76,4 +76,113 @@ button {
 }
 .false {
   background-color: pink;
+}  */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+aside {
+  margin-bottom: 10px;
+}
+
+.numbers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.number {
+  background-color: #ddd;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(9, 50px);
+  grid-template-rows: repeat(9, 50px);
+  gap: 1px;
+}
+
+.cell {
+  background-color: #eee;
+  border: 1px solid #aaa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.strong {
+  background-color: #f0f0f0;
+  font-weight: 600;
+}
+
+.false {
+  background-color: #ffcccc;
+}
+
+footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+footer button {
+  width: 130px;
+  height: 40px;
+  margin: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+footer button:hover {
+  background-color: #45a049;
+}
+
+footer button:focus {
+  outline: none;
+  box-shadow: 0 0 5px #4caf50;
+}
+
+/* קו עבה משמאל כל 3 עמודות */
+.cell:nth-child(3n + 1) {
+  border-left: 3px solid black;
+}
+
+/* קו עבה מעל כל 3 שורות */
+.cell:nth-child(n + 1):nth-child(-n + 9),
+.cell:nth-child(n + 28):nth-child(-n + 36),
+.cell:nth-child(n + 55):nth-child(-n + 63) {
+  border-top: 3px solid black;
+}
+
+/* קו עבה מימין לשורה האחרונה */
+.cell:nth-child(9n) {
+  border-right: 3px solid black;
+}
+
+/* קו עבה מתחת לעמודה האחרונה */
+ .cell:nth-last-child(-n + 9) {
+  border-bottom: 3px solid black;
+}
+button a{
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+  color: white;
 }
