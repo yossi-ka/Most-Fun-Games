@@ -66,7 +66,7 @@ button {
   justify-content: center;
   flex-wrap: wrap;
   width: 630px; */
-  /* margin: 0px 100px;
+/* margin: 0px 100px;
   display: grid;
   grid-template-columns: repeat(9, 70px);
   grid-template-rows: repeat(9, 70px);
@@ -142,7 +142,6 @@ footer button {
   width: 130px;
   height: 40px;
   margin: 5px;
-  padding: 10px 20px;
   cursor: pointer;
   background-color: #4caf50;
   color: white;
@@ -177,12 +176,13 @@ footer button:focus {
 }
 
 /* קו עבה מתחת לעמודה האחרונה */
- .cell:nth-last-child(-n + 9) {
+.cell:nth-last-child(-n + 9) {
   border-bottom: 3px solid black;
 }
-button a{
+button a {
   height: 100%;
   width: 100%;
   text-decoration: none;
   color: white;
+  padding: 10px 20px;
 }

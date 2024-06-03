@@ -3,16 +3,16 @@ let C = "x"; //  Computer
 let P = "o"; //  Person
 const youre = document.querySelector(".youre");
 const youreBtn = youre.querySelectorAll("button");
-const main = document.querySelector("main")
+const main = document.querySelector("main");
 youreBtn[0].addEventListener("click", () => {
   C = "o";
   P = "x";
-main.style.display="block"
+  main.style.display = "block";
   youre.style.display = "none";
 });
 youreBtn[1].addEventListener("click", () => {
-main.style.display="block"
-youre.style.display = "none";
+  main.style.display = "block";
+  youre.style.display = "none";
 });
 //  setting variabls
 const board = document.querySelector(".board");
@@ -26,23 +26,41 @@ function getRandomNum() {
 }
 //  --  game loop  --
 //  persons' turn
-board.addEventListener("click", put);
-function put(event) {
-  let current = event.target;
-  if (current.textContent === "") {
-    current.textContent = P;
-  }
-  if (checkWin(P)) {
-    document.querySelector(".youWin").style.display = "block";
-  }
-  //  computers' turn
-  let x = getRandomNum();
-  while (cells[x].textContent !== "") {
-    x = getRandomNum();
-  }
-  cells[x].textContent = C;
-  if (checkWin(C)) {
-    document.querySelector(".youFailed").style.display = "block";
+let countTurn = 0; //  num of turn
+
+board.addEventListener("click", game);
+
+function game(event) {
+  if (countTurn % 2 === 0) {
+    countTurn++;
+    let current = event.target;
+    if (current.textContent === "") {
+      current.textContent = P;
+    }
+    if (checkWin(P)) {
+      document.querySelector(".youWin").style.display = "block";
+      board.removeEventListener("click", game);
+      return;
+    } else if (countTurn === 9) {
+      document.querySelector(".youFailed").style.display = "block";
+      board.removeEventListener("click", game);
+      return;
+    }
+
+    setTimeout(Computer, 1000);
+    //  computers' turn
+    function Computer() {
+      countTurn++;
+      let x = getRandomNum();
+      while (cells[x].textContent !== "") {
+        x = getRandomNum();
+      }
+      cells[x].textContent = C;
+      if (checkWin(C)) {
+        document.querySelector(".youFailed").style.display = "block";
+        return;
+      }
+    }
   }
 }
 

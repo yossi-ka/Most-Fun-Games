@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>landing page</title>
-    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/index.css" />
   </head>
   <body>
     <header>
@@ -14,25 +14,44 @@
       </div>
     </header>
     <main>
-      <div class="box">
+      <div class="login">
         <h1>Login</h1>
         <form action="">
           <label for="email">Enter your Email</label>
           <br />
-          <input type="email" id="email" name="login" />
+          <input type="email" id="email" name="login" required />
           <br />
           <label for="password">Enter your password</label>
           <br />
-          <input type="password" name="login" id="password" />
+          <input type="password" name="login" id="password" required />
           <br />
           <button type="submit" value="Login">Login</button>
         </form>
-        <h2>Don't have an account yet? <a href="">Sign up</a></h2>
+        <h2>Don't have an account yet? <p id="sign-up">Sign up</p></h2>
+      </div>
+      <div class="sign-up">
+        <h1>Sing up</h1>
+        <form action="">
+          <label for="name">Enter your name</label>
+          <input type="text" name="new-customer" id="name" required />
+          <label for="sign-email">Enter your Email</label>
+          <input type="email" name="new-customer" id="sign-email" required />
+          <h5>* this email is not available</h5>
+          <label for="sign-password">Choose your password</label>
+          <input
+            type="password"
+            id="sign-password"
+            name="new-customer"
+            required
+          />
+          <button type="submit" value="sign-up" id="signUpNew">Sign up</button>
+        </form>
       </div>
     </main>
     <footer>
       <div class="about">About</div>
       <div class="contact">Contact us</div>
     </footer>
+    <script src="../js/index.js"></script>
   </body>
 </html>

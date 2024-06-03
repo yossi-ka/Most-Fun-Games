@@ -1,4 +1,3 @@
-/* Reset some default browser styles */
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +13,6 @@ body {
   min-height: 100vh;
 }
 
-/* Style the header */
 header {
   background-color: #4caf50;
   color: white;
@@ -26,7 +24,6 @@ header .welcome {
   font-size: 1.5em;
 }
 
-/* Style the main content */
 main {
   flex: 1;
   display: flex;
@@ -35,7 +32,7 @@ main {
   padding: 20px;
 }
 
-main .box {
+main .login {
   background-color: white;
   padding: 30px;
   border-radius: 8px;
@@ -45,22 +42,22 @@ main .box {
   width: 100%;
 }
 
-main .box h1 {
+main .login h1 {
   margin-bottom: 20px;
 }
 
-main .box form {
+main .login form {
   margin-bottom: 20px;
 }
 
-main .box label {
+main .login label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
 }
 
-main .box input[type="email"],
-main .box input[type="password"] {
+main .login input[type="email"],
+main .login input[type="password"] {
   width: calc(100% - 20px);
   padding: 10px;
   margin-bottom: 20px;
@@ -68,7 +65,7 @@ main .box input[type="password"] {
   border-radius: 4px;
 }
 
-main .box button {
+main .login button {
   padding: 10px 20px;
   background-color: #4caf50;
   color: white;
@@ -77,24 +74,24 @@ main .box button {
   cursor: pointer;
 }
 
-main .box button:hover {
+main .login button:hover {
   background-color: #45a049;
 }
 
-main .box h2 {
+main .login h2 {
   margin-top: 20px;
 }
 
-main .box a {
+main .login p {
   color: #4caf50;
   text-decoration: none;
+  cursor: pointer;
 }
 
-main .box a:hover {
+main .login a:hover {
   text-decoration: underline;
 }
 
-/* Style the footer */
 footer {
   background-color: #333;
   color: white;
@@ -106,4 +103,57 @@ footer {
 
 footer div {
   margin: 5px;
+}
+
+.sign-up {
+  display: none;
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+.sign-up h1 {
+  margin-bottom: 20px;
+}
+
+.sign-up form {
+  margin-bottom: 20px;
+}
+
+.sign-up label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.sign-up input[type="text"],
+.sign-up input[type="email"],
+.sign-up input[type="password"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.sign-up button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sign-up button:hover {
+  background-color: #45a049;
+}
+h5 {
+  display: none;
+  text-align: left;
+  color: red;
 }
