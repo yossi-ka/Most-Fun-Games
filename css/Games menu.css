@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+:root {
+  --width-item: 350px;
+  --height-item: 175px;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.introduction {
+  margin: 30px;
+}
+.main-menu {
+  width: 950px;
+}
+.menu {
+  display: inline-block;
+  height: var(--height-item);
+  width: var(--width-item);
+  border-radius: 25px;
+  background-color: greenyellow;
+  margin: 50px;
+}
+.menu a {
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+}
+.menu p {
+  height: 100%;
+  width: 100%;
+  font-size: 50px;
+  padding: 13% 0px;
+  text-align: center;
+  font-family: monospace;
+  color: rgb(0, 87, 0);
+}
