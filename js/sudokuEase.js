@@ -1,29 +1,15 @@
-//  sudoku data
-// const sudokuArr = [
-//   [6, 4, 9, 2, 5, 7, 8, 3, 1],
-//   [5, 3, 1, 9, 8, 4, 6, 7, 2],
-//   [8, 2, 7, 6, 1, 3, 5, 4, 9],
-//   [9, 6, 2, 3, 7, 8, 4, 1, 5],
-//   [1, 8, 5, 4, 2, 9, 7, 6, 3],
-//   [3, 7, 4, 5, 6, 1, 9, 2, 8],
-//   [4, 9, 6, 8, 3, 2, 1, 5, 7],
-//   [2, 1, 8, 7, 4, 5, 3, 9, 6],
-//   [7, 5, 3, 1, 9, 6, 2, 8, 4],
-// ];
+function getNum(){
+  
+}
 
-//  creating 81 cells
-// const board = document.querySelector(".board");
-// for (let i = 0; i < discover.length; i++) {
-//   for (let j = 0; j < discover.length; j++) {
-//     let div = document.createElement("div");
-//     div.classList.add("cell");
-//     board.append(div);
-//     if (discover[i][j] > 0) {
-//       div.textContent = discover[i][j];
-//       div.classList.add("strong");
-//     }
-//   }
-// }
+
+
+
+
+
+
+
+
 //  sudoku data
 const sudokuArr = [
   6, 4, 9, 2, 5, 7, 8, 3, 1, 5, 3, 1, 9, 8, 4, 6, 7, 2, 8, 2, 7, 6, 1, 3, 5, 4,
