@@ -42,8 +42,12 @@ main .login {
   width: 100%;
 }
 
-main .login h1 {
-  margin-bottom: 20px;
+.login .logoImg {
+  background-image: url("./assents/images/logo-fun-games.png");
+  background-size: contain; /* כדי להתאים את התמונה לרוחב ולגובה של ה-DIV */
+  background-repeat: no-repeat; /* כדי למנוע חזרות של התמונה */
+  width: 100%;
+  height: 200px; /* אפשר לשנות את הגובה כפי שתרצה */
 }
 
 main .login form {

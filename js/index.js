@@ -1,5 +1,7 @@
+// localStorage.removeItem("users-fun")
+const arr = [];
+localStorage.setItem("current-user", JSON.stringify(arr));
 if (localStorage.getItem("users-fun") === null) {
-  const arr = [];
   localStorage.setItem("users-fun", JSON.stringify(arr));
 }
 const sign = document.querySelector(".sign-up");
@@ -11,17 +13,20 @@ const forms = document.querySelectorAll("form");
 signUpLink.addEventListener("click", () => {
   sign.style.display = "block";
   log.style.display = "none";
+  document.querySelector("header").style.display = "none";
 });
 //  check if the new customers' email is available
-const h5Ava = document.querySelector("h5");
+const h5Ava = document.querySelector(".available");
 const mail = document.querySelector("#sign-email");
 let available = true;
 mail.addEventListener("input", () => {
+  available = true;
   let mailInput = mail.value;
   const usersArr = JSON.parse(localStorage.getItem("users-fun"));
   for (let i = 0; i < usersArr.length; i++) {
-    if (usersArr[i].email === mailInput) available = false;
-    else available = true;
+    if (usersArr[i].email === mailInput) {
+      available = false;
+    }
   }
   if (!available) {
     h5Ava.style.display = "block";
@@ -29,7 +34,7 @@ mail.addEventListener("input", () => {
     h5Ava.style.display = "none";
   }
 });
-//  sign up the new customer
+//  signs-up the new customer
 if (available) {
   forms[1].addEventListener("submit", () => {
     const inputs = forms[1].querySelectorAll("input");
@@ -38,11 +43,13 @@ if (available) {
       name: inputs[0].value,
       email: inputs[1].value,
       password: inputs[2].value,
+      score: 0,
     };
     usersArr.push(newCustomer);
     localStorage.setItem("users-fun", JSON.stringify(usersArr));
     sign.style.display = "none";
     log.style.display = "block";
+    document.querySelector("header").style.display = "block";
   });
 }
 
@@ -56,7 +63,10 @@ forms[0].addEventListener("submit", (event) => {
       inputs[0].value === usersArr[i].email &&
       inputs[1].value === usersArr[i].password
     ) {
-      window.location.href = "/pages/games-menu.html";
+      localStorage.setItem("current-user", JSON.stringify(usersArr[i]));
+      window.location.replace("/pages/games-menu.html");
+    } else {
+      document.querySelector(".error").style.display = "block";
     }
   }
 });

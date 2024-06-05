@@ -15,16 +15,13 @@
     </header>
     <main>
       <div class="login">
-        <h1>Login</h1>
+        <img src="./assents/images/logo-fun-games.png" alt="" width="100%" />
         <form action="">
           <label for="email">Enter your Email</label>
-          <br />
           <input type="email" id="email" name="login" required />
-          <br />
           <label for="password">Enter your password</label>
-          <br />
           <input type="password" name="login" id="password" required />
-          <br />
+          <h5 class="error">* Email or password incorrect</h5>
           <button type="submit" value="Login">Login</button>
         </form>
         <h2>
@@ -33,13 +30,14 @@
         </h2>
       </div>
       <div class="sign-up">
+        <img src="./assents/images/logo-fun-games.png" alt="" width="100%" />
         <h1>Sing up</h1>
         <form action="">
           <label for="name">Enter your name</label>
           <input type="text" name="new-customer" id="name" required />
           <label for="sign-email">Enter your Email</label>
           <input type="email" name="new-customer" id="sign-email" required />
-          <h5>* this email is not available</h5>
+          <h5 class="available">* this email is not available</h5>
           <label for="sign-password">Choose your password</label>
           <input
             type="password"

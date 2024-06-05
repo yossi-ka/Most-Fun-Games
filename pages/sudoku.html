@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="../css/sudoku.css" />
   </head>
   <body>
+    <nav>
+      <img src="../assents/images/logo-fun-games.png" alt="logo" />
+      <div class="nav-right">
+        <button class="logOut">Log out</button>
+        <div class="user"></div>
+        <div class="score">Total points:</div>
+      </div>
+    </nav>
     <div class="game">
       <aside>
         <section>
@@ -25,7 +33,7 @@
           <div class="number">7</div>
           <div class="number">8</div>
           <div class="number">9</div>
-          <div class="number">clear</div>
+          <div class="number">Clear</div>
         </div>
       </aside>
 
@@ -37,9 +45,13 @@
       <button class="reset">reset</button>
       <button class="solution">show solution</button>
       <button class="back">
-        <a href="../pages/games menu.html">back to menu</a>
+        <a href="../pages/games-menu.html">back to menu</a>
       </button>
     </footer>
-    <script src="../js/sudokuEase.js"></script>
+    <div class="youWin">
+      you win!!
+      <button class="again">play again?</button>
+    </div>
+    <script src="../js/sudoku.js"></script>
   </body>
 </html>

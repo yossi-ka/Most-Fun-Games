@@ -1,3 +1,9 @@
+//  navigation
+const user = document.querySelector(".user");
+const score = document.querySelector(".score");
+const cuurentUser = JSON.parse(localStorage.getItem("current-user"));
+user.textContent = cuurentUser.name;
+score.textContent +="  "+ cuurentUser.score;
 //  setting the animals
 const snakeImg = "../assents/images/snake.png";
 const bearImg = "../assents/images/bear.jpg";
