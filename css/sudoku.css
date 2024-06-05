@@ -3,80 +3,6 @@
   margin: 0px;
   padding: 0px;
 }
-
-/* קו עבה משמאל כל 3 עמודות */
-/* .cell:nth-child(3n + 1) {
-  border-left: 3px solid black;
-} */
-
-/* קו עבה מעל כל 3 שורות */
-/* .cell:nth-child(n + 1):nth-child(-n + 9),
-.cell:nth-child(n + 28):nth-child(-n + 36),
-.cell:nth-child(n + 55):nth-child(-n + 63) {
-  border-top: 3px solid black;
-} */
-
-/* קו עבה מימין לשורה האחרונה */
-/* .cell:nth-child(9n) {
-  border-right: 3px solid black;
-} */
-
-/* קו עבה מתחת לעמודה האחרונה */
-/* .cell:nth-last-child(-n + 9) {
-  border-bottom: 3px solid black;
-}
-
-.game {
-  display: flex;
-  justify-content: center;
-}
-main {
-  padding: 30px;
-}  */
-/* aside {
-  padding: 50px;
-}
-.number {
-  padding: 10px 20px;
-  margin: 10px;
-  border: 2px solid black;
-  text-align: center;
-  font-size: 30px;
-}
-footer {
-  display: flex;
-  justify-content: center;
-}
-button {
-  margin: 0px 100px 30px;
-  padding: 15px 25px;
-  font-size: 20px;
-}
-.cell {
-  display: inline-block;
-  height: 70px;
-  width: 70px;
-  border: 1px solid black;
-  padding: 10px;
-  font-size: 40px;
-  text-align: center;
-} */
-/* .board {
-  /* display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 630px; */
-/* margin: 0px 100px;
-  display: grid;
-  grid-template-columns: repeat(9, 70px);
-  grid-template-rows: repeat(9, 70px);
-}
-.strong {
-  font-weight: 700;
-}
-.false {
-  background-color: pink;
-}  */
 body {
   font-family: Arial, sans-serif;
 }
@@ -111,7 +37,6 @@ aside {
   display: grid;
   grid-template-columns: repeat(9, 50px);
   grid-template-rows: repeat(9, 50px);
-  gap: 1px;
 }
 
 .cell {

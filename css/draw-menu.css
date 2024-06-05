@@ -1,44 +1,10 @@
-/* * {
-  box-sizing: border-box;
-  padding: 0px;
-  margin: 0px;
-}
-body {
-  display: flex;
-  justify-content: center;
-}
-a {
-  text-decoration: none;
-  height: 100%;
-  width: 100%;
-}
-div {
-  height: 500px;
-  width: 250px;
-  background-color: bisque;
-  display: inline-block;
-  margin: 50px;
-  border-radius: 25px;
-}
-p {
-  height: 100%;
-  width: 100%;
-  text-align: center;
-  padding: 200px 0px;
-  font-size: 50px;
-  color: rgb(255, 157, 36);
-  font-weight: 600;
-} */
-
-
-/* Reset some default browser styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
+main {
   font-family: Arial, sans-serif;
   line-height: 1.6;
   background-color: #f0f0f0;
@@ -48,7 +14,6 @@ body {
   height: 100vh;
 }
 
-/* Style the menu items */
 .menu {
   background-color: white;
   border-radius: 8px;
@@ -67,7 +32,7 @@ body {
 
 .menu a {
   text-decoration: none;
-  color: #4CAF50;
+  color: #4caf50;
   font-size: 1.2em;
   display: block;
 }
@@ -88,4 +53,45 @@ body {
 
 .menu.car {
   background-color: #fce4ec;
+}
+
+nav {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav img {
+  height: 50px; /* Adjust the height as needed */
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+nav .logOut {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1em;
+  border-radius: 5px;
+  margin-left: 20px; /* Adjust the margin as needed */
+  transition: background-color 0.3s;
+}
+
+nav .logOut:hover {
+  background-color: #45a049;
+}
+
+nav .user,
+nav .score {
+  margin-left: 20px; /* Adjust the margin as needed */
+  font-size: 1.2em;
+  text-align: center;
 }
