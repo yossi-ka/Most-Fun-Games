@@ -1,3 +1,4 @@
+const usersArr = JSON.parse(localStorage.getItem("users-fun"));
 const current = JSON.parse(localStorage.getItem("current-user"));
 if (current.length === 0) window.location.replace("/index.html");
 //  navigation
@@ -127,6 +128,14 @@ function youFailed() {
 }
 //  you win
 function youWin() {
+  for (let i = 0; i < usersArr.length; i++) {
+    if (currentUser.email === usersArr[i].email) {
+      currentUser.score++;
+      localStorage.setItem("current-user", JSON.stringify(currentUser));
+      usersArr[i].score++;
+      localStorage.setItem("users-fun", JSON.stringify(usersArr));
+    }
+  }
   game.removeEventListener("click", discover);
   document.querySelector(".youWin").style.display = "block";
 }
