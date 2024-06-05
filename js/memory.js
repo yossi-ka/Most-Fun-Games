@@ -1,6 +1,6 @@
 const usersArr = JSON.parse(localStorage.getItem("users-fun"));
-const current = JSON.parse(localStorage.getItem("current-user"));
-if (current.length === 0) window.location.replace("/index.html");
+const currentUser = JSON.parse(localStorage.getItem("current-user"));
+if (currentUser.length === 0) window.location.replace("/index.html");
 //  navigation
 const user = document.querySelector(".user");
 const score = document.querySelector(".score");
