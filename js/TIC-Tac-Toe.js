@@ -1,3 +1,12 @@
+const current = JSON.parse(localStorage.getItem("current-user"));
+if (current.length === 0) window.location.replace("/index.html");
+//navgation
+const user = document.querySelector(".user");
+const score = document.querySelector(".score");
+const usersArr = JSON.parse(localStorage.getItem("users-fun"));
+const currentUser = JSON.parse(localStorage.getItem("current-user"));
+user.textContent = currentUser.name;
+score.textContent += "  " + currentUser.score;
 //  choosing your type
 let C = "x"; //  Computer
 let P = "o"; //  Person
@@ -38,6 +47,14 @@ function game(event) {
       current.textContent = P;
     }
     if (checkWin(P)) {
+      for (let i = 0; i < usersArr.length; i++) {
+        if (currentUser.email === usersArr[i].email) {
+          currentUser.score++;
+          localStorage.setItem("current-user", JSON.stringify(currentUser));
+          usersArr[i].score++;
+          localStorage.setItem("users-fun", JSON.stringify(usersArr));
+        }
+      }
       document.querySelector(".youWin").style.display = "block";
       board.removeEventListener("click", game);
       return;
@@ -101,4 +118,10 @@ document.querySelectorAll(".again").forEach((el) => {
   el.addEventListener("click", () => {
     location.reload();
   });
+});
+//  log out
+const logOut = document.querySelector(".logOut");
+logOut.addEventListener("click", () => {
+  localStorage.removeItem("current-user");
+  window.location.replace("/index.html");
 });

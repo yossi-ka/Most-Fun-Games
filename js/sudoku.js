@@ -1,3 +1,5 @@
+const current = JSON.parse(localStorage.getItem("current-user"));
+if (current.length === 0) window.location.replace("/index.html");
 //navgation
 const user = document.querySelector(".user");
 const score = document.querySelector(".score");
@@ -223,4 +225,10 @@ function youWin() {
 //  play again
 document.querySelector(".again").addEventListener("click", () => {
   location.reload();
+});
+//  log out
+const logOut = document.querySelector(".logOut");
+logOut.addEventListener("click", () => {
+  localStorage.removeItem("current-user");
+  window.location.replace("/index.html");
 });

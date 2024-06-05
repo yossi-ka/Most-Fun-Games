@@ -1,9 +1,11 @@
+const current = JSON.parse(localStorage.getItem("current-user"));
+if (current.length === 0) window.location.replace("/index.html");
 //  navigation
 const user = document.querySelector(".user");
 const score = document.querySelector(".score");
 const cuurentUser = JSON.parse(localStorage.getItem("current-user"));
 user.textContent = cuurentUser.name;
-score.textContent +="  "+ cuurentUser.score;
+score.textContent += "  " + cuurentUser.score;
 //  setting the animals
 const snakeImg = "../assents/images/snake.png";
 const bearImg = "../assents/images/bear.jpg";
@@ -133,4 +135,10 @@ document.querySelectorAll(".again").forEach((el) => {
   el.addEventListener("click", () => {
     location.reload();
   });
+});
+//  log out
+const logOut = document.querySelector(".logOut");
+logOut.addEventListener("click", () => {
+  localStorage.removeItem("current-user");
+  window.location.replace("/index.html");
 });

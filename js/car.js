@@ -1,3 +1,5 @@
+const current = JSON.parse(localStorage.getItem("current-user"));
+if (current.addEventListener === 0) window.location.replace("/index.html");
 localStorage.setItem("currentColor", "white");
 const colors = document.querySelector(".colors");
 const color = document.querySelectorAll(".color");
@@ -21,3 +23,9 @@ function draw(event) {
     event.target.style.backgroundColor = y;
   } 
 }
+//  log out
+const logOut = document.querySelector(".logOut");
+logOut.addEventListener("click", () => {
+  localStorage.removeItem("current-user");
+  window.location.replace("/index.html");
+});
