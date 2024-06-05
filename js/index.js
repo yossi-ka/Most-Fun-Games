@@ -65,8 +65,27 @@ forms[0].addEventListener("submit", (event) => {
     ) {
       localStorage.setItem("current-user", JSON.stringify(usersArr[i]));
       window.location.replace("/pages/games-menu.html");
+      break;
     } else {
       document.querySelector(".error").style.display = "block";
     }
   }
 });
+
+// //  login for existing customers
+// forms[0].addEventListener("submit", (event) => {
+//   event.preventDefault();
+//   const inputs = forms[0].querySelectorAll("input");
+//   const usersArr = JSON.parse(localStorage.getItem("users-fun"));
+
+//   const found = usersArr.find((use, i) => {
+//     return use.email === inputs[0].value && use.password === inputs[1].value;
+//   });
+
+//   if (found) {
+//     localStorage.setItem("current-user", JSON.stringify());         -----      ???      -----
+//     window.location.replace("/pages/games-menu.html");
+//   } else {
+//     document.querySelector(".error").style.display = "block";
+//   }
+// });
