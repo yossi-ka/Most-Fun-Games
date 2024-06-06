@@ -169,12 +169,16 @@ ol {
     max-width: 260px;
   }
 }
-@media only screen and (max-width: 930px) {
+@media only screen and (max-width: 1040px) {
   .header {
     margin-top: 90px;
   }
 }
-
+@media only screen and (max-width: 930px) {
+  .header {
+    margin-top: 190px;
+  }
+}
 @media only screen and (max-width: 450px) {
   .board {
     width: 350px;

@@ -86,7 +86,7 @@ header a:hover {
 }
 .bodyDown {
   position: absolute;
-  top: 248px;
+  top: 240px;
   height: 150px;
   width: 650px;
   border: black 5px solid;
@@ -97,7 +97,6 @@ footer {
   margin-top: 250px;
   text-align: center;
   background-color: #333;
-  /* color: rgb(155, 132, 0); */
 }
 footer h1 {
   font-size: 1.5em;
@@ -138,4 +137,10 @@ footer h1 {
   border: black 1px solid;
   display: inline-block;
   margin: 10px;
+}
+@media only screen and (max-width: 560px) {
+  .bodyUp {
+    z-index: 2;
+    /* margin-top: 90px; */
+  }
 }

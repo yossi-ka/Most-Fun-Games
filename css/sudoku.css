@@ -222,10 +222,11 @@ ol {
   padding: 0 15px;
 }
 
-@media only screen and (max-width: 990px) {
+@media only screen and (max-width: 1670px) {
   .header {
-    margin-top: 300px;
-    max-width: 260px;
+    margin-top: 30px;
+    position: relative;
+    max-width: 600px;
   }
 }
 @media only screen and (max-width: 380px) {

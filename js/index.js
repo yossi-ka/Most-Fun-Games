@@ -1,6 +1,8 @@
 // localStorage.removeItem("users-fun")
 const arr = [];
-localStorage.setItem("current-user", JSON.stringify(arr));
+if (localStorage.getItem("current-user") === null) {
+  localStorage.setItem("current-user", JSON.stringify(arr));
+}
 if (localStorage.getItem("users-fun") === null) {
   localStorage.setItem("users-fun", JSON.stringify(arr));
 }
