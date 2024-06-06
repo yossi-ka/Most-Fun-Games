@@ -1,3 +1,15 @@
+let music = document.querySelector("#background-music");
+let musicBtn = document.querySelector(".playPause-music");
+musicBtn.addEventListener("click", () => {
+  if (music.paused) {
+    music.play();
+    musicBtn.textContent = "Pause background music";
+  } else {
+    music.pause();
+    musicBtn.textContent = "Play background music";
+  }
+});
+
 const current = JSON.parse(localStorage.getItem("current-user"));
 if (current[0] === null) window.location.replace("/index.html");
 const h1 = document.querySelector("h1");
