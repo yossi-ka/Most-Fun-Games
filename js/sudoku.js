@@ -1,7 +1,7 @@
 const usersArr = JSON.parse(localStorage.getItem("users-fun"));
 const current = JSON.parse(localStorage.getItem("current-user"));
+const currentUser = JSON.parse(localStorage.getItem("current-user"));
 window.onload = () => {
-  const currentUser = JSON.parse(localStorage.getItem("current-user"));
   if (current.length === 0) window.location.replace("/index.html");
 };
 //navgation
@@ -157,9 +157,9 @@ document.querySelector(".solution").addEventListener("click", () => {
 function youWin() {
   for (let i = 0; i < usersArr.length; i++) {
     if (currentUser.email === usersArr[i].email) {
-      currentUser.score++;
+      currentUser.score+=5;
       localStorage.setItem("current-user", JSON.stringify(currentUser));
-      usersArr[i].score++;
+      usersArr[i].score+=5;
       localStorage.setItem("users-fun", JSON.stringify(usersArr));
     }
   }

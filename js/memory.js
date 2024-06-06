@@ -131,9 +131,9 @@ function youFailed() {
 function youWin() {
   for (let i = 0; i < usersArr.length; i++) {
     if (currentUser.email === usersArr[i].email) {
-      currentUser.score++;
+      currentUser.score+=3;
       localStorage.setItem("current-user", JSON.stringify(currentUser));
-      usersArr[i].score++;
+      usersArr[i].score+=3;
       localStorage.setItem("users-fun", JSON.stringify(usersArr));
     }
   }
