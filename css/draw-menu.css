@@ -9,6 +9,7 @@ main {
   line-height: 1.6;
   background-color: #f0f0f0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -91,7 +92,31 @@ nav .logOut:hover {
 
 nav .user,
 nav .score {
-  margin-left: 20px; /* Adjust the margin as needed */
+  margin-left: 20px;
   font-size: 1.2em;
   text-align: center;
+}
+footer {
+  margin-top: 20px;
+  text-align: center;
+}
+.main-menu{
+  display: flex;
+}
+footer button {
+  width: 130px;
+  height: 40px;
+  margin: 5px;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+#back{
+  font-size:0.93em;
+}
+
+footer button:hover {
+  background-color: #45a049;
 }

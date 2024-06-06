@@ -1,9 +1,9 @@
 const usersArr = JSON.parse(localStorage.getItem("users-fun"));
 const current = JSON.parse(localStorage.getItem("current-user"));
 window.onload = () => {
-
-const currentUser = JSON.parse(localStorage.getItem("current-user"));
-if (current.length === 0) window.location.replace("/index.html");}
+  const currentUser = JSON.parse(localStorage.getItem("current-user"));
+  if (current.length === 0) window.location.replace("/index.html");
+};
 //navgation
 const user = document.querySelector(".user");
 const score = document.querySelector(".score");
@@ -122,7 +122,10 @@ board.addEventListener("click", insert);
 function insert(event) {
   let location = event.target;
   const cellIndex = Array.from(board.children).indexOf(location);
-  if (!location.classList.value.includes("strong")) {
+  if (
+    !location.classList.value.includes("strong") &&
+    location.classList.value.includes("cell")
+  ) {
     if (num > 0) {
       location.textContent = num;
       if (sudokuArr[cellIndex] !== Number(num)) {

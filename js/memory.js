@@ -5,9 +5,9 @@ if (currentUser.length === 0) window.location.replace("/index.html");}
 //  navigation
 const user = document.querySelector(".user");
 const score = document.querySelector(".score");
-const cuurentUser = JSON.parse(localStorage.getItem("current-user"));
-user.textContent = cuurentUser.name;
-score.textContent += "  " + cuurentUser.score;
+const currentUser = JSON.parse(localStorage.getItem("current-user"));
+user.textContent = currentUser.name;
+score.textContent += "  " + currentUser.score;
 //  setting the animals
 const snakeImg = "../assents/images/snake.png";
 const bearImg = "../assents/images/bear.jpg";

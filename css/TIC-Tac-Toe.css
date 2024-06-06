@@ -62,7 +62,7 @@ nav .score {
 }
 
 .youre {
-  position: absolute;
+  margin-top: 30px;
   top: 100px;
   background-color: #4caf50;
   text-align: center;
@@ -162,23 +162,36 @@ ol {
   list-style: none;
   padding: 0 15px;
 }
+footer {
+  margin-top: 20px;
+  text-align: center;
+}
 
+footer button {
+  width: 130px;
+  height: 40px;
+  margin: 5px;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+#back {
+  font-size: 0.93em;
+}
+
+footer button:hover {
+  background-color: #45a049;
+}
 @media only screen and (max-width: 1260px) {
   .header {
+    position: relative;
     margin-top: 20px;
     max-width: 260px;
   }
 }
-@media only screen and (max-width: 1040px) {
-  .header {
-    margin-top: 90px;
-  }
-}
-@media only screen and (max-width: 930px) {
-  .header {
-    margin-top: 190px;
-  }
-}
+
 @media only screen and (max-width: 450px) {
   .board {
     width: 350px;
