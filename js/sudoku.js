@@ -1,7 +1,9 @@
 const usersArr = JSON.parse(localStorage.getItem("users-fun"));
 const current = JSON.parse(localStorage.getItem("current-user"));
+window.onload = () => {
+
 const currentUser = JSON.parse(localStorage.getItem("current-user"));
-if (current.length === 0) window.location.replace("/index.html");
+if (current.length === 0) window.location.replace("/index.html");}
 //navgation
 const user = document.querySelector(".user");
 const score = document.querySelector(".score");

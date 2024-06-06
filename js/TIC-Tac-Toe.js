@@ -1,5 +1,7 @@
-const current = JSON.parse(localStorage.getItem("current-user"));
-if (current.length === 0) window.location.replace("/index.html");
+window.onload = () => {
+  const current = JSON.parse(localStorage.getItem("current-user"));
+  if (current.length === 0) window.location.replace("/index.html");
+};
 //navgation
 const user = document.querySelector(".user");
 const score = document.querySelector(".score");

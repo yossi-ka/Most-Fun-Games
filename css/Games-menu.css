@@ -91,6 +91,9 @@ main {
 .menu.memory {
   background-color: #e8f5e9;
 }
+.menu.reverse {
+  background-color: rgb(242, 223, 242);
+}
 
 footer {
   background-color: #333;
@@ -159,4 +162,14 @@ nav .score {
   margin-left: 20px; /* Adjust the margin as needed */
   font-size: 1.2em;
   text-align: center;
+}
+@media only screen and (max-width: 400px) {
+  nav {
+    font-size: 0.8em;
+  }
+}
+@media only screen and (max-width: 380px) {
+  nav {
+    font-size: 0.7em;
+  }
 }

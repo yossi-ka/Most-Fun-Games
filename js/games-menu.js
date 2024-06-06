@@ -1,3 +1,7 @@
+window.onload = () => {
+  const current = JSON.parse(localStorage.getItem("current-user"));
+  if (current.length === 0) window.location.replace("/index.html");
+};
 let music = document.querySelector("#background-music");
 let musicBtn = document.querySelector(".playPause-music");
 musicBtn.addEventListener("click", () => {
@@ -10,8 +14,6 @@ musicBtn.addEventListener("click", () => {
   }
 });
 
-const current = JSON.parse(localStorage.getItem("current-user"));
-if (current[0] === null) window.location.replace("/index.html");
 const h1 = document.querySelector("h1");
 const user = document.querySelector(".user");
 const score = document.querySelector(".score");

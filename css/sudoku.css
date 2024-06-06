@@ -73,6 +73,9 @@ footer button {
   border: none;
   border-radius: 5px;
 }
+#back{
+  font-size:0.93em;
+}
 
 footer button:hover {
   background-color: #45a049;
@@ -205,4 +208,28 @@ nav .score {
   margin-left: 20px; /* Adjust the margin as needed */
   font-size: 1.2em;
   text-align: center;
+}
+.header {
+  background-color: rgb(240, 243, 202);
+  position: fixed;
+  top: 50%;
+  padding: 30px 15px 30px 30px;
+  border-radius: 12px;
+  border: 3px solid green;
+}
+ol {
+  list-style: none;
+  padding: 0 15px;
+}
+
+@media only screen and (max-width: 990px) {
+  .header {
+    margin-top: 300px;
+    max-width: 260px;
+  }
+}
+@media only screen and (max-width: 380px) {
+  nav {
+    font-size: 0.7em;
+  }
 }

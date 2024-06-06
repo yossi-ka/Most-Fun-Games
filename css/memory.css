@@ -54,8 +54,18 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
-
-/* Style for the aside */
+.header {
+  background-color: rgb(240, 243, 202);
+  position: fixed;
+  top: 50%;
+  padding: 30px 15px 30px 30px;
+  border-radius: 12px;
+  border: 3px solid green;
+}
+ol {
+  list-style: none;
+  padding: 0 15px;
+}
 aside {
   background-color: #4caf50;
   padding: 20px;
@@ -88,7 +98,6 @@ aside .cover:hover {
   background-color: #ddd;
 }
 
-/* Style for the main game area */
 main {
   flex: 1;
   display: flex;
@@ -183,7 +192,6 @@ main {
   background-color: #45a049;
 }
 
-
 nav {
   background-color: #333;
   color: white;
@@ -223,4 +231,16 @@ nav .score {
   margin-left: 20px; /* Adjust the margin as needed */
   font-size: 1.2em;
   text-align: center;
+}
+@media only screen and (max-width: 950px) {
+  .header {
+    margin-top: 30px;
+    position: relative;
+    max-width: 260px;
+  }
+}
+@media only screen and (max-width: 380px) {
+  nav {
+    font-size: 0.7em;
+  }
 }

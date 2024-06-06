@@ -4,43 +4,54 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TIC Tac Toe</title>
+    <link rel="stylesheet" href="../css/normalize.css" />
     <link rel="stylesheet" href="../css/TIC-Tac-Toe.css" />
   </head>
   <body>
-    <nav>
-      <img src="../assents/images/logo-fun-games.png" alt="logo" />
-      <div class="nav-right">
-        <button class="logOut">Log out</button>
-        <div class="user"></div>
-        <div class="score">Total points:</div>
+    <div class="body">
+      <nav>
+        <img src="../assents/images/logo-fun-games.png" alt="logo" />
+        <div class="nav-right">
+          <button class="logOut">Log out</button>
+          <div class="user"></div>
+          <div class="score">Total points:</div>
+        </div>
+      </nav>
+      <div class="youre">
+        <h1>I want to be:</h1>
+        <button>X</button>
+        <button>O</button>
       </div>
-    </nav>
-    <div class="youre">
-      <h1>I want to be:</h1>
-      <button>X</button>
-      <button>O</button>
+      <main>
+        <div class="board">
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+        </div>
+      </main>
+
+      <div class="alerts">
+        <div class="youWin">
+          <h1>you win!!</h1>
+          <button class="again">play again?</button>
+        </div>
+        <div class="youFailed">
+          <h1>you failed this time...</h1>
+          <button class="again">play again?</button>
+        </div>
+      </div>
     </div>
-    <main>
-      <div class="board">
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-      </div>
-    </main>
-    <div class="alerts">
-      <div class="youWin">
-        <h1>you win!!</h1>
-        <button class="again">play again?</button>
-      </div>
-      <div class="youFailed">
-        <h1>you failed this time...</h1>
-        <button class="again">play again?</button>
+    <div class="header">
+      <div class="introduction">
+        <h2>Memory game</h2>
+        <br />
+        <p><strong>Object:</strong>to fill a row/column straight or diagonally.</p>
       </div>
     </div>
     <script src="../js/TIC-Tac-Toe.js"></script>

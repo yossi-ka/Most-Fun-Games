@@ -1,5 +1,6 @@
-const current = JSON.parse(localStorage.getItem("current-user"));
-if (current.length === 0) window.location.replace("/index.html");
+window.onload = () => {
+  const current = JSON.parse(localStorage.getItem("current-user"));
+if (current.length === 0) window.location.replace("/index.html");}
 localStorage.setItem("currentColor", "white");
 const colors = document.querySelector(".colors");
 const color = document.querySelectorAll(".color");
