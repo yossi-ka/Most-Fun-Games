@@ -1,7 +1,8 @@
 const usersArr = JSON.parse(localStorage.getItem("users-fun"));
 window.onload = () => {
   const currentUser = JSON.parse(localStorage.getItem("current-user"));
-if (currentUser.length === 0) window.location.replace("/index.html");}
+  if (currentUser.length === 0) window.location.replace("/index.html");
+};
 //  navigation
 const user = document.querySelector(".user");
 const score = document.querySelector(".score");
@@ -131,9 +132,9 @@ function youFailed() {
 function youWin() {
   for (let i = 0; i < usersArr.length; i++) {
     if (currentUser.email === usersArr[i].email) {
-      currentUser.score+=3;
+      currentUser.score += 3;
       localStorage.setItem("current-user", JSON.stringify(currentUser));
-      usersArr[i].score+=3;
+      usersArr[i].score += 3;
       localStorage.setItem("users-fun", JSON.stringify(usersArr));
     }
   }

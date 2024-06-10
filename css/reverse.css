@@ -90,7 +90,7 @@ main {
   grid-template-columns: repeat(8, 50px);
   grid-template-rows: repeat(8, 50px);
   border-collapse: collapse;
-  margin: 40px 0;
+  margin: 40px;
 }
 
 .cell {
