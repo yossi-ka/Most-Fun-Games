@@ -34,6 +34,27 @@ for (let i = 0; i < 8; i++) {
   }
 }
 
+//  i want to be:
+let P = "red"; //  persons' color
+let C = "yellow"; //  computers' color
+const howColor = document.querySelector(".how-color");
+const redBtn = howColor.querySelectorAll("button")[0];
+const yellowBtn = howColor.querySelectorAll("button")[1];
+redBtn.addEventListener("click", () => {
+  howColor.style.display = "none";
+  board.style.display = "grid";
+  document.querySelector(".youre-color").style.display = "flex";
+  document.querySelector(".hisColor").style.backgroundColor = "red";
+});
+yellowBtn.addEventListener("click", () => {
+  P = "yellow";
+  C = "red";
+  howColor.style.display = "none";
+  board.style.display = "grid";
+  document.querySelector(".youre-color").style.display = "flex";
+  document.querySelector(".hisColor").style.backgroundColor = "yellow";
+});
+
 //  checks if his action is legal
 function isLegal(i, j, color) {
   let control = [0, 0, 0, 0, 0, 0, 0, 0]; // controls the data of all directions
@@ -263,26 +284,6 @@ function put(event) {
   }
 }
 
-//  i want to be:
-let P = "red"; //  persons' color
-let C = "yellow"; //  computers' color
-const howColor = document.querySelector(".how-color");
-const redBtn = howColor.querySelectorAll("button")[0];
-const yellowBtn = howColor.querySelectorAll("button")[1];
-redBtn.addEventListener("click", () => {
-  howColor.style.display = "none";
-  board.style.display = "grid";
-  document.querySelector(".youre-color").style.display = "flex";
-  document.querySelector(".hisColor").style.backgroundColor = "red";
-});
-yellowBtn.addEventListener("click", () => {
-  P = "yellow";
-  C = "red";
-  howColor.style.display = "none";
-  board.style.display = "grid";
-  document.querySelector(".youre-color").style.display = "flex";
-  document.querySelector(".hisColor").style.backgroundColor = "yellow";
-});
 //  reset
 document.querySelector(".reset").addEventListener("click", () => {
   location.reload();
