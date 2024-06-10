@@ -38,31 +38,73 @@ for (let i = 0; i < 8; i++) {
 const cells = board.querySelectorAll(".cell");
 board.addEventListener("click", put);
 function put(event) {
-  const ev = event.target;
-  let canPut = true;
-  if (!ev.classList.value.includes("cell")) canPut = false; //  makes sure the user puts on a cell
-  if (
-    //  makes sure the user doesn't click on a painted square
-    ev.classList.value.includes("red") ||
-    ev.classList.value.includes("yellow")
-  )
-    canPut = false;
-  if (!isLegal(ev.getAttribute("data-row"), ev.getAttribute("data-column"), P))
-    canPut = false;
+  if (event.target.classList.value.includes("cell")) {
+    const ev = event.target;
+    let canPut = true;
+    if (!ev.classList.value.includes("cell")) canPut = false; //  makes sure the user puts on a cell
+    if (
+      //  makes sure the user doesn't click on a painted square
+      ev.classList.value.includes("red") ||
+      ev.classList.value.includes("yellow")
+    )
+      canPut = false;
+    if (
+      !isLegal(ev.getAttribute("data-row"), ev.getAttribute("data-column"), P)
+    )
+      canPut = false;
+  }
 }
 
 //  checks if his action is legal
-function isLegal(i, j) {
-  for (let k = 0; k < 64; k++) {
+function isLegal(i, j, color) {
+  let control = [0, 0, 0, 0, 0, 0, 0, 0]; // controls the data of all directions
+
+  let otherColor = () => {
+    if (color === "red") return "yellow";
+    else return "red";
+  };
+  let k = 0;
+  for (k = 0; k < 64; k++) {
     if (
       cells[k].getAttribute("data-row") === i &&
       cells[k].getAttribute("data-column") === j
-    )
+    ) {
       break;
+    }
   }
+
   //  After the loop, i = row, and j = column
-  //  diraction 1 = right.
-  for (let k = j + 1; k < 7; k++) {}
+  //  direction 0 = right.
+  let next0 = cells[k].nextElementSibling;
+  if (next0.classList.value.includes(otherColor()) && j <= 5) {
+    for (let l = Number(j) + 1; l <= 7; l++) {
+      if (next0.classList.value.includes(color)) {
+        break;
+      } else if (next0.classList.value.includes(otherColor())) {
+        control[0]++;
+      } else {
+        control[0] = 0;
+        break;
+      }
+      next0 = next0.nextElementSibling;
+    }
+  }
+  //  direction 1 = left.
+  let next1 = cells[k].previousElementSibling;
+  if (next1.classList.value.includes(otherColor()) && j >= 1) {
+    for (let l = Number(j) - 1; l >= 0; l--) {
+      if (next1.classList.value.includes(color)) {
+        break;
+      } else if (next1.classList.value.includes(otherColor())) {
+        control[1]++;
+      } else {
+        control[1] = 0;
+        break;
+      }
+      next1 = next1.previousElementSibling;
+    }
+  }
+  console.log(control);
 }
 
 //  i want to be:
