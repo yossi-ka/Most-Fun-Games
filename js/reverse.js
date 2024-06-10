@@ -49,7 +49,11 @@ function put(event) {
     )
       canPut = false;
     if (
-      !isLegal(ev.getAttribute("data-row"), ev.getAttribute("data-column"), P)
+      isLegal(
+        ev.getAttribute("data-row"),
+        ev.getAttribute("data-column"),
+        P
+      ) === 0
     )
       canPut = false;
   }
@@ -76,145 +80,160 @@ function isLegal(i, j, color) {
   //  After the loop, i = row, and j = column
 
   //  direction 0 = right.
-  let next0 = cells[k].nextElementSibling;
-  if (next0.classList.value.includes(otherColor()) && j <= 5) {
-    for (let l = Number(j) + 1; l <= 7; l++) {
-      if (next0.classList.value.includes(color)) {
-        break;
-      } else if (next0.classList.value.includes(otherColor())) {
-        if (l === 7) control[0] = 0;
-        else control[0]++;
-      } else {
-        control[0] = 0;
-        break;
+  if (i !== "7" || j !== "7") {
+    let next0 = cells[k].nextElementSibling;
+    if (next0.classList.value.includes(otherColor()) && j <= 5) {
+      for (let l = Number(j) + 1; l <= 7; l++) {
+        if (next0.classList.value.includes(color)) {
+          break;
+        } else if (next0.classList.value.includes(otherColor())) {
+          if (l === 7) control[0] = 0;
+          else control[0]++;
+        } else {
+          control[0] = 0;
+          break;
+        }
+        next0 = next0.nextElementSibling;
       }
-      next0 = next0.nextElementSibling;
     }
   }
   //  direction 1 = left.
-  let next1 = cells[k].previousElementSibling;
-  if (next1.classList.value.includes(otherColor()) && j >= 2) {
-    for (let l = Number(j) - 1; l >= 0; l--) {
-      if (next1.classList.value.includes(color)) {
-        break;
-      } else if (next1.classList.value.includes(otherColor())) {
-        if (l === 0) control[1] = 0;
-        else control[1]++;
-      } else {
-        control[1] = 0;
-        break;
+  if (i !== "0" || j !== "0") {
+    let next1 = cells[k].previousElementSibling;
+    if (next1.classList.value.includes(otherColor()) && j >= 2) {
+      for (let l = Number(j) - 1; l >= 0; l--) {
+        if (next1.classList.value.includes(color)) {
+          break;
+        } else if (next1.classList.value.includes(otherColor())) {
+          if (l === 0) control[1] = 0;
+          else control[1]++;
+        } else {
+          control[1] = 0;
+          break;
+        }
+        next1 = next1.previousElementSibling;
       }
-      next1 = next1.previousElementSibling;
     }
   }
   //  direction 2 = top.
-  let next2 = cells[k - 8];
-  if (next2.classList.value.includes(otherColor()) && j >= 2) {
-    for (let l = Number(i) - 1; l >= 0; l--) {
-      if (next2.classList.value.includes(color)) {
-        break;
-      } else if (next2.classList.value.includes(otherColor())) {
-        if (l === 0) control[2] = 0;
-        else control[2]++;
-      } else {
-        control[2] = 0;
-        break;
+  if (i !== "0") {
+    let next2 = cells[k - 8];
+    if (next2.classList.value.includes(otherColor()) && j >= 2) {
+      for (let l = Number(i) - 1; l >= 0; l--) {
+        if (next2.classList.value.includes(color)) {
+          break;
+        } else if (next2.classList.value.includes(otherColor())) {
+          if (l === 0) control[2] = 0;
+          else control[2]++;
+        } else {
+          control[2] = 0;
+          break;
+        }
+        next2 = cells[Array.from(cells).indexOf(next2) - 8];
       }
-      next2 = cells[Array.from(cells).indexOf(next2) - 8];
     }
   }
   //  direction 3 = bottom.
-  let next3 = cells[k + 8];
-  if (next3.classList.value.includes(otherColor()) && j <= 5) {
-    for (let l = Number(i) + 1; l <= 7; l++) {
-      if (next3.classList.value.includes(color)) {
-        break;
-      } else if (next3.classList.value.includes(otherColor())) {
-        if (l === 7) control[3] = 0;
-        else control[3]++;
-      } else {
-        control[3] = 0;
-        break;
+  if (i !== "7") {
+    let next3 = cells[k + 8];
+    if (next3.classList.value.includes(otherColor()) && j <= 5) {
+      for (let l = Number(i) + 1; l <= 7; l++) {
+        if (next3.classList.value.includes(color)) {
+          break;
+        } else if (next3.classList.value.includes(otherColor())) {
+          if (l === 7) control[3] = 0;
+          else control[3]++;
+        } else {
+          control[3] = 0;
+          break;
+        }
+        next3 = cells[Array.from(cells).indexOf(next3) + 8];
       }
-      next3 = cells[Array.from(cells).indexOf(next3) + 8];
     }
   }
   //  direction 4 = right-bottom.
-  let next4 = cells[k + 9];
-  if (next4.classList.value.includes(otherColor()) && i <= 5 && j <= 5) {
-    let m = Number(j);
-    for (let l = Number(i) + 1; l <= 7; l++) {
-      m++;
-      if (next4.classList.value.includes(color)) {
-        break;
-      } else if (next4.classList.value.includes(otherColor())) {
-        if (l === 7 || m === 7) control[4] = 0;
-        else control[4]++;
-      } else {
-        control[4] = 0;
-        break;
+  if (k <= 54) {
+    let next4 = cells[k + 9];
+    if (next4.classList.value.includes(otherColor()) && i <= 5 && j <= 5) {
+      let m = Number(j);
+      for (let l = Number(i) + 1; l <= 7; l++) {
+        m++;
+        if (next4.classList.value.includes(color)) {
+          break;
+        } else if (next4.classList.value.includes(otherColor())) {
+          if (l === 7 || m === 7) control[4] = 0;
+          else control[4]++;
+        } else {
+          control[4] = 0;
+          break;
+        }
+        next4 = cells[Array.from(cells).indexOf(next4) + 9];
       }
-      next4 = cells[Array.from(cells).indexOf(next4) + 9];
     }
   }
   //  direction 5 = right-top.
-  let next5 = cells[k - 7];
-  if (next5.classList.value.includes(otherColor()) && i >= 2 && j <= 5) {
-    let m = Number(j);
-    for (let l = Number(i) - 1; l >= 0; l--) {
-      m++;
-      if (next5.classList.value.includes(color)) {
-        break;
-      } else if (next5.classList.value.includes(otherColor())) {
-        if (l === 0 || m === 7) control[5] = 0;
-        else control[5]++;
-      } else {
-        control[5] = 0;
-        break;
+  if (k >= 8) {
+    let next5 = cells[k - 7];
+    if (next5.classList.value.includes(otherColor()) && i >= 2 && j <= 5) {
+      let m = Number(j);
+      for (let l = Number(i) - 1; l >= 0; l--) {
+        m++;
+        if (next5.classList.value.includes(color)) {
+          break;
+        } else if (next5.classList.value.includes(otherColor())) {
+          if (l === 0 || m === 7) control[5] = 0;
+          else control[5]++;
+        } else {
+          control[5] = 0;
+          break;
+        }
+        next5 = cells[Array.from(cells).indexOf(next5) - 7];
       }
-      next5 = cells[Array.from(cells).indexOf(next5) - 7];
     }
   }
   //  direction 6 = left-bottom.
-  let next6 = cells[k + 7];
-  if (next6.classList.value.includes(otherColor()) && i <= 5 && j >= 2) {
-    let m = Number(j);
-    for (let l = Number(i) + 1; l <= 7; l++) {
-      m--;
-      if (next6.classList.value.includes(color)) {
-        break;
-      } else if (next6.classList.value.includes(otherColor())) {
-        if (l === 7 || m === 0) control[6] = 0;
-        else control[6]++;
-      } else {
-        control[6] = 0;
-        break;
+  if (k <= 55) {
+    let next6 = cells[k + 7];
+    if (next6.classList.value.includes(otherColor()) && i <= 5 && j >= 2) {
+      let m = Number(j);
+      for (let l = Number(i) + 1; l <= 7; l++) {
+        m--;
+        if (next6.classList.value.includes(color)) {
+          break;
+        } else if (next6.classList.value.includes(otherColor())) {
+          if (l === 7 || m === 0) control[6] = 0;
+          else control[6]++;
+        } else {
+          control[6] = 0;
+          break;
+        }
+        next6 = cells[Array.from(cells).indexOf(next6) + 7];
       }
-      next6 = cells[Array.from(cells).indexOf(next6) + 7];
     }
   }
-  //  direction 7 = left-bottom.
-  let next7 = cells[k - 9];
-  if (next7.classList.value.includes(otherColor()) && i <= 5 && j >= 2) {
-    let m = Number(j);
-    for (let l = Number(i) - 1; l >= 0; l--) {
-      m--;
-      if (next7.classList.value.includes(color)) {
-        break;
-      } else if (next7.classList.value.includes(otherColor())) {
-        if (l === 0 || m === 0) control[7] = 0;
-        else control[7]++;
-      } else {
-        control[7] = 0;
-        break;
+  //  direction 7 = left-top.
+  if (k >= 9) {
+    let next7 = cells[k - 9];
+    if (next7.classList.value.includes(otherColor()) && i <= 5 && j >= 2) {
+      let m = Number(j);
+      for (let l = Number(i) - 1; l >= 0; l--) {
+        m--;
+        if (next7.classList.value.includes(color)) {
+          break;
+        } else if (next7.classList.value.includes(otherColor())) {
+          if (l === 0 || m === 0) control[7] = 0;
+          else control[7]++;
+        } else {
+          control[7] = 0;
+          break;
+        }
+        next7 = cells[Array.from(cells).indexOf(next7) - 9];
       }
-      next7 = cells[Array.from(cells).indexOf(next7) - 9];
     }
   }
-  const sum = control.reduce((total, value) => {
+  return control.reduce((total, value) => {
     return total + value;
   });
-  console.log(sum);
 }
 
 //  i want to be:
