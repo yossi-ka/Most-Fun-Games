@@ -34,31 +34,6 @@ for (let i = 0; i < 8; i++) {
   }
 }
 
-//  game loop
-const cells = board.querySelectorAll(".cell");
-board.addEventListener("click", put);
-function put(event) {
-  if (event.target.classList.value.includes("cell")) {
-    const ev = event.target;
-    let canPut = true;
-    if (!ev.classList.value.includes("cell")) canPut = false; //  makes sure the user puts on a cell
-    if (
-      //  makes sure the user doesn't click on a painted square
-      ev.classList.value.includes("red") ||
-      ev.classList.value.includes("yellow")
-    )
-      canPut = false;
-    if (
-      isLegal(
-        ev.getAttribute("data-row"),
-        ev.getAttribute("data-column"),
-        P
-      ) === 0
-    )
-      canPut = false;
-  }
-}
-
 //  checks if his action is legal
 function isLegal(i, j, color) {
   let control = [0, 0, 0, 0, 0, 0, 0, 0]; // controls the data of all directions
@@ -76,7 +51,6 @@ function isLegal(i, j, color) {
       break;
     }
   }
-
   //  After the loop, i = row, and j = column
 
   //  direction 0 = right.
@@ -234,6 +208,59 @@ function isLegal(i, j, color) {
   return control.reduce((total, value) => {
     return total + value;
   });
+}
+
+// checks who won
+function whoWon() {
+  let painted = 0;
+  let red = 0;
+  let yellow = 0;
+  for (const slot of board) {
+    if (slot.classList.value.includes("red")) {
+      painted++;
+      red++;
+    } else if (slot.classList.value.includes("yellow")) {
+      painted++;
+      yellow++;
+    }
+  }
+  if (painted === 64) {
+    if ((red > yellow && P === "red") || (yellow > red && P === "yellow")) {
+      console.log("the person won the computer");
+    } else if (
+      (red < yellow && P === "red") ||
+      (yellow < red && P === "yellow")
+    ) {
+      console.log("the computer won the person");
+    } else {
+      console.log("draw!");
+    }
+  }
+}
+
+//  game loop
+const cells = board.querySelectorAll(".cell");
+board.addEventListener("click", put);
+function put(event) {
+  if (event.target.classList.value.includes("cell")) {
+    const ev = event.target;
+    let canPut = true;
+    if (!ev.classList.value.includes("cell")) canPut = false; //  makes sure the user puts on a cell
+    if (
+      //  makes sure the user doesn't click on a painted square
+      ev.classList.value.includes("red") ||
+      ev.classList.value.includes("yellow")
+    )
+      canPut = false;
+    if (
+      isLegal(
+        ev.getAttribute("data-row"),
+        ev.getAttribute("data-column"),
+        P
+      ) === 0
+    )
+      canPut = false;
+  }
 }
 
 //  i want to be:
