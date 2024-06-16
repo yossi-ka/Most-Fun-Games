@@ -1,3 +1,4 @@
+"use strict";
 const usersArr = JSON.parse(localStorage.getItem("users-fun"));
 window.onload = () => {
   const currentUser = JSON.parse(localStorage.getItem("current-user"));
@@ -226,9 +227,12 @@ function isLegal(i, j, color) {
       }
     }
   }
-  return control.reduce((total, value) => {
+
+  let sum = control.reduce((total, value) => {
     return total + value;
   });
+  control.push(sum);
+  return control;
 }
 
 // checks who won
@@ -261,9 +265,10 @@ function whoWon() {
 
 //  game loop
 const cells = board.querySelectorAll(".cell");
+let counter = 0;
 board.addEventListener("click", put);
 function put(event) {
-  if (event.target.classList.value.includes("cell")) {
+  if (event.target.classList.value.includes("cell") && counter % 2 === 0) {
     const ev = event.target;
     let canPut = true;
     if (!ev.classList.value.includes("cell")) canPut = false; //  makes sure the user puts on a cell
@@ -273,17 +278,83 @@ function put(event) {
       ev.classList.value.includes("yellow")
     )
       canPut = false;
-    if (
-      isLegal(
-        ev.getAttribute("data-row"),
-        ev.getAttribute("data-column"),
-        P
-      ) === 0
-    )
-      canPut = false;
+    let sumLegal = isLegal(
+      ev.getAttribute("data-row"),
+      ev.getAttribute("data-column"),
+      P
+    );
+    if (sumLegal[8] === 0) canPut = false;
+    if (canPut) reverse(ev, sumLegal.slice(0, 8), P);
   }
 }
-
+function reverse(ev, arr, clr) {
+  ev.classList.add(clr);
+  let otherColor = () => {
+    if (clr === "red") return "yellow";
+    return "red";
+  };
+  //  direction 0 = right.
+  if (arr[0] > 0) {
+    let next0 = ev.nextElementSibling;
+    console.log(next0);
+    for (let i = 0; i < arr[0]; i++) {
+      next0.classList.remove(otherColor());
+      next0.classList.add(clr);
+      next0 = next0.nextElementSibling;
+    }
+  }
+  //  direction 1 = left.
+  if (arr[1] > 0) {
+    let next1 = ev.previousElementSibling;
+    for (let i = 0; i < arr[1]; i++) {
+      next1.classList.remove(otherColor());
+      next1.classList.add(clr);
+      next1 = next1.previousElementSibling;
+    }
+  }
+  //  direction 2 = top.
+  if (arr[2] > 0) {
+    let current = Array.from(cells).indexOf(ev);
+    let next2 = cells[current - 8];
+    for (let i = 0; i < arr[2]; i++) {
+      next2.classList.remove(otherColor());
+      next2.classList.add(clr);
+      current -= 8;
+      next2 = cells[current - 8];
+    }
+  }
+  //  direction 3 = bottom.
+  if (arr[3] > 0) {
+    let current = Array.from(cells).indexOf(ev);
+    let next3 = cells[current + 8];
+    for (let i = 0; i < arr[3]; i++) {
+      next3.classList.remove(otherColor());
+      next3.classList.add(clr);
+      current -= 8;
+      next3 = cells[current + 8];
+    }
+  }
+  //  direction 4 = right-bottom.
+  if (arr[4] > 0) {
+    let current = Array.from(cells).indexOf(ev);
+    let next4 = cells[current + 9];
+    for (let i = 0; i < arr[4]; i++) {
+      next4.classList.remove(otherColor());
+      next4.classList.add(clr);
+      current -= 8;
+      next4 = cells[current + 9];
+    }
+  }
+  //  direction 5 = right-top.
+  if (arr[5] > 0) {
+  }
+  //  direction 6 = left-bottom.
+  if (arr[6] > 0) {
+  }
+  //  direction 7 = left-top.
+  if (arr[7] > 0) {
+  }
+}
 //  reset
 document.querySelector(".reset").addEventListener("click", () => {
   location.reload();
