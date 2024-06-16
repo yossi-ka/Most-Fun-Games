@@ -234,6 +234,99 @@ function isLegal(i, j, color) {
   control.push(sum);
   return control;
 }
+function reverse(ev, arr, clr) {
+  ev.classList.add(clr);
+  let otherColor = () => {
+    if (clr === "red") return "yellow";
+    return "red";
+  };
+  //  direction 0 = right.
+  if (arr[0] > 0) {
+    let next0 = ev.nextElementSibling;
+    console.log(next0);
+    for (let i = 0; i < arr[0]; i++) {
+      next0.classList.remove(otherColor());
+      next0.classList.add(clr);
+      next0 = next0.nextElementSibling;
+    }
+  }
+  //  direction 1 = left.
+  if (arr[1] > 0) {
+    let next1 = ev.previousElementSibling;
+    for (let i = 0; i < arr[1]; i++) {
+      next1.classList.remove(otherColor());
+      next1.classList.add(clr);
+      next1 = next1.previousElementSibling;
+    }
+  }
+  //  direction 2 = top.
+  if (arr[2] > 0) {
+    let current = Array.from(cells).indexOf(ev);
+    let next2 = cells[current - 8];
+    for (let i = 0; i < arr[2]; i++) {
+      next2.classList.remove(otherColor());
+      next2.classList.add(clr);
+      current -= 8;
+      next2 = cells[current - 8];
+    }
+  }
+  //  direction 3 = bottom.
+  if (arr[3] > 0) {
+    let current = Array.from(cells).indexOf(ev);
+    let next3 = cells[current + 8];
+    for (let i = 0; i < arr[3]; i++) {
+      next3.classList.remove(otherColor());
+      next3.classList.add(clr);
+      current += 8;
+      next3 = cells[current + 8];
+    }
+  }
+
+  //  direction 4 = right-bottom.
+  if (arr[4] > 0) {
+    let current = Array.from(cells).indexOf(ev);
+    let next4 = cells[current + 9];
+    for (let i = 0; i < arr[4]; i++) {
+      next4.classList.remove(otherColor());
+      next4.classList.add(clr);
+      current += 9;
+      next4 = cells[current + 9];
+    }
+  }
+  //  direction 5 = right-top.
+  if (arr[5] > 0) {
+    let current = Array.from(cells).indexOf(ev);
+    let next5 = cells[current - 7];
+    for (let i = 0; i < arr[5]; i++) {
+      next5.classList.remove(otherColor());
+      next5.classList.add(clr);
+      current -= 7;
+      next5 = cells[current - 7];
+    }
+  }
+  //  direction 6 = left-bottom.
+  if (arr[6] > 0) {
+    let current = Array.from(cells).indexOf(ev);
+    let next6 = cells[current + 7];
+    for (let i = 0; i < arr[6]; i++) {
+      next6.classList.remove(otherColor());
+      next6.classList.add(clr);
+      current += 7;
+      next6 = cells[current + 7];
+    }
+  }
+  //  direction 7 = left-top.
+  if (arr[7] > 0) {
+    let current = Array.from(cells).indexOf(ev);
+    let next7 = cells[current - 9];
+    for (let i = 0; i < arr[7]; i++) {
+      next7.classList.remove(otherColor());
+      next7.classList.add(clr);
+      current -= 9;
+      next7 = cells[current - 9];
+    }
+  }
+}
 
 // checks who won
 function whoWon() {
@@ -287,74 +380,7 @@ function put(event) {
     if (canPut) reverse(ev, sumLegal.slice(0, 8), P);
   }
 }
-function reverse(ev, arr, clr) {
-  ev.classList.add(clr);
-  let otherColor = () => {
-    if (clr === "red") return "yellow";
-    return "red";
-  };
-  //  direction 0 = right.
-  if (arr[0] > 0) {
-    let next0 = ev.nextElementSibling;
-    console.log(next0);
-    for (let i = 0; i < arr[0]; i++) {
-      next0.classList.remove(otherColor());
-      next0.classList.add(clr);
-      next0 = next0.nextElementSibling;
-    }
-  }
-  //  direction 1 = left.
-  if (arr[1] > 0) {
-    let next1 = ev.previousElementSibling;
-    for (let i = 0; i < arr[1]; i++) {
-      next1.classList.remove(otherColor());
-      next1.classList.add(clr);
-      next1 = next1.previousElementSibling;
-    }
-  }
-  //  direction 2 = top.
-  if (arr[2] > 0) {
-    let current = Array.from(cells).indexOf(ev);
-    let next2 = cells[current - 8];
-    for (let i = 0; i < arr[2]; i++) {
-      next2.classList.remove(otherColor());
-      next2.classList.add(clr);
-      current -= 8;
-      next2 = cells[current - 8];
-    }
-  }
-  //  direction 3 = bottom.
-  if (arr[3] > 0) {
-    let current = Array.from(cells).indexOf(ev);
-    let next3 = cells[current + 8];
-    for (let i = 0; i < arr[3]; i++) {
-      next3.classList.remove(otherColor());
-      next3.classList.add(clr);
-      current -= 8;
-      next3 = cells[current + 8];
-    }
-  }
-  //  direction 4 = right-bottom.
-  if (arr[4] > 0) {
-    let current = Array.from(cells).indexOf(ev);
-    let next4 = cells[current + 9];
-    for (let i = 0; i < arr[4]; i++) {
-      next4.classList.remove(otherColor());
-      next4.classList.add(clr);
-      current -= 8;
-      next4 = cells[current + 9];
-    }
-  }
-  //  direction 5 = right-top.
-  if (arr[5] > 0) {
-  }
-  //  direction 6 = left-bottom.
-  if (arr[6] > 0) {
-  }
-  //  direction 7 = left-top.
-  if (arr[7] > 0) {
-  }
-}
+
 //  reset
 document.querySelector(".reset").addEventListener("click", () => {
   location.reload();
