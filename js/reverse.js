@@ -101,8 +101,10 @@ function isLegal(i, j, color) {
         if (next1.classList.value.includes(color)) {
           break;
         } else if (next1.classList.value.includes(otherColor())) {
-          if (l === 0) control[1] = 0;
-          else control[1]++;
+          if (l === 0) {
+            control[1] = 0;
+            break;
+          } else control[1]++;
         } else {
           control[1] = 0;
           break;
@@ -112,15 +114,17 @@ function isLegal(i, j, color) {
     }
   }
   //  direction 2 = top.
-  if (i !== "0") {
+  if (i >= "2") {
     let next2 = cells[k - 8];
     if (next2.classList.value.includes(otherColor())) {
       for (let l = Number(i) - 1; l >= 0; l--) {
         if (next2.classList.value.includes(color)) {
           break;
         } else if (next2.classList.value.includes(otherColor())) {
-          if (l === 0) control[2] = 0;
-          else control[2]++;
+          if (l === 0) {
+            control[2] = 0;
+            break;
+          } else control[2]++;
         } else {
           control[2] = 0;
           break;
@@ -130,15 +134,17 @@ function isLegal(i, j, color) {
     }
   }
   //  direction 3 = bottom.
-  if (i !== "7") {
+  if (i <= "5") {
     let next3 = cells[k + 8];
     if (next3.classList.value.includes(otherColor())) {
       for (let l = Number(i) + 1; l <= 7; l++) {
         if (next3.classList.value.includes(color)) {
           break;
         } else if (next3.classList.value.includes(otherColor())) {
-          if (l === 7) control[3] = 0;
-          else control[3]++;
+          if (l === 7) {
+            control[3] = 0;
+            break;
+          } else control[3]++;
         } else {
           control[3] = 0;
           break;
@@ -148,17 +154,19 @@ function isLegal(i, j, color) {
     }
   }
   //  direction 4 = right-bottom.
-  if (k <= 54) {
+  if (i <= "5" && j <= "5") {
     let next4 = cells[k + 9];
-    if (next4.classList.value.includes(otherColor()) && i <= "5" && j <= "5") {
+    if (next4.classList.value.includes(otherColor())) {
       let m = Number(j);
       for (let l = Number(i) + 1; l <= 7; l++) {
         m++;
         if (next4.classList.value.includes(color)) {
           break;
         } else if (next4.classList.value.includes(otherColor())) {
-          if (l === 7 || m === 7) control[4] = 0;
-          else control[4]++;
+          if (l === 7 || m === 7) {
+            control[4] = 0;
+            break;
+          } else control[4]++;
         } else {
           control[4] = 0;
           break;
@@ -168,17 +176,19 @@ function isLegal(i, j, color) {
     }
   }
   //  direction 5 = right-top.
-  if (k >= 8) {
+  if (i >= "2" && j <= "5") {
     let next5 = cells[k - 7];
-    if (next5.classList.value.includes(otherColor()) && i >= "2" && j <= "5") {
+    if (next5.classList.value.includes(otherColor())) {
       let m = Number(j);
       for (let l = Number(i) - 1; l >= 0; l--) {
         m++;
         if (next5.classList.value.includes(color)) {
           break;
         } else if (next5.classList.value.includes(otherColor())) {
-          if (l === 0 || m === 7) control[5] = 0;
-          else control[5]++;
+          if (l === 0 || m === 7) {
+            control[5] = 0;
+            break;
+          } else control[5]++;
         } else {
           control[5] = 0;
           break;
@@ -188,17 +198,19 @@ function isLegal(i, j, color) {
     }
   }
   //  direction 6 = left-bottom.
-  if (k <= 55) {
+  if (i <= "5" && j >= "2") {
     let next6 = cells[k + 7];
-    if (next6.classList.value.includes(otherColor()) && i <= "5" && j >= "2") {
+    if (next6.classList.value.includes(otherColor())) {
       let m = Number(j);
       for (let l = Number(i) + 1; l <= 7; l++) {
         m--;
         if (next6.classList.value.includes(color)) {
           break;
         } else if (next6.classList.value.includes(otherColor())) {
-          if (l === 7 || m === 0) control[6] = 0;
-          else control[6]++;
+          if (l === 7 || m === 0) {
+            control[6] = 0;
+            break;
+          } else control[6]++;
         } else {
           control[6] = 0;
           break;
@@ -208,17 +220,19 @@ function isLegal(i, j, color) {
     }
   }
   //  direction 7 = left-top.
-  if (k >= 9) {
+  if (i >= "2" && j >= "2") {
     let next7 = cells[k - 9];
-    if (next7.classList.value.includes(otherColor()) && i >= "2" && j >= "2") {
+    if (next7.classList.value.includes(otherColor())) {
       let m = Number(j);
       for (let l = Number(i) - 1; l >= 0; l--) {
         m--;
         if (next7.classList.value.includes(color)) {
           break;
         } else if (next7.classList.value.includes(otherColor())) {
-          if (l === 0 || m === 0) control[7] = 0;
-          else control[7]++;
+          if (l === 0 || m === 0) {
+            control[7] = 0;
+            break;
+          } else control[7]++;
         } else {
           control[7] = 0;
           break;
@@ -232,21 +246,10 @@ function isLegal(i, j, color) {
     return total + value;
   });
   control.push(sum);
-  return control; //  this function returns an array with 9 places, the last place is the "sum"
+  return control; //  returns an array with 9 places, the last place is the "sum"
 }
 
 function reverse(ev, arr, clr) {
-  if (counter % 2 === 1) console.log("person:");
-  else console.log("computer:");
-  console.log(ev);
-  if (arr[0] > 0) console.log("right");
-  if (arr[1] > 0) console.log("left");
-  if (arr[2] > 0) console.log("top");
-  if (arr[3] > 0) console.log("bottom");
-  if (arr[4] > 0) console.log("right-bottom");
-  if (arr[5] > 0) console.log("right-top");
-  if (arr[6] > 0) console.log("left-bottom");
-  if (arr[7] > 0) console.log("left-top");
   ev.classList.add(clr);
   let otherColor = () => {
     if (clr === "red") return "yellow";
@@ -396,7 +399,7 @@ function put(event) {
     }
     if (counter % 2 === 1) {
       //  computers' turn.
-      setTimeout(computer, 2000);
+      setTimeout(computer, 2200);
 
       function computer() {
         let max = [0];
