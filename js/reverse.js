@@ -76,7 +76,7 @@ function isLegal(i, j, color) {
   //  After the loop, i = row, and j = column
 
   //  direction 0 = right.
-  if (i !== "7" || j !== "7") {
+  if (j <= "5") {
     let next0 = cells[k].nextElementSibling;
     if (next0.classList.value.includes(otherColor()) && j <= 5) {
       for (let l = Number(j) + 1; l <= 7; l++) {
@@ -94,7 +94,7 @@ function isLegal(i, j, color) {
     }
   }
   //  direction 1 = left.
-  if (i !== "0" || j !== "0") {
+  if (j >= "2") {
     let next1 = cells[k].previousElementSibling;
     if (next1.classList.value.includes(otherColor()) && j >= 2) {
       for (let l = Number(j) - 1; l >= 0; l--) {
@@ -114,7 +114,7 @@ function isLegal(i, j, color) {
   //  direction 2 = top.
   if (i !== "0") {
     let next2 = cells[k - 8];
-    if (next2.classList.value.includes(otherColor()) && j >= 2) {
+    if (next2.classList.value.includes(otherColor())) {
       for (let l = Number(i) - 1; l >= 0; l--) {
         if (next2.classList.value.includes(color)) {
           break;
@@ -132,7 +132,7 @@ function isLegal(i, j, color) {
   //  direction 3 = bottom.
   if (i !== "7") {
     let next3 = cells[k + 8];
-    if (next3.classList.value.includes(otherColor()) && j <= 5) {
+    if (next3.classList.value.includes(otherColor())) {
       for (let l = Number(i) + 1; l <= 7; l++) {
         if (next3.classList.value.includes(color)) {
           break;
@@ -232,9 +232,18 @@ function isLegal(i, j, color) {
     return total + value;
   });
   control.push(sum);
-  return control;
+  return control; //  this function returns an array with 9 places, the last place is the "sum"
 }
+
 function reverse(ev, arr, clr) {
+  if (arr[0] > 0) console.log("right");
+  if (arr[1] > 0) console.log("left");
+  if (arr[2] > 0) console.log("top");
+  if (arr[3] > 0) console.log("bottom");
+  if (arr[4] > 0) console.log("right-bottom");
+  if (arr[5] > 0) console.log("right-top");
+  if (arr[6] > 0) console.log("left-bottom");
+  if (arr[7] > 0) console.log("left-top");
   ev.classList.add(clr);
   let otherColor = () => {
     if (clr === "red") return "yellow";
@@ -243,7 +252,6 @@ function reverse(ev, arr, clr) {
   //  direction 0 = right.
   if (arr[0] > 0) {
     let next0 = ev.nextElementSibling;
-    console.log(next0);
     for (let i = 0; i < arr[0]; i++) {
       next0.classList.remove(otherColor());
       next0.classList.add(clr);
@@ -376,8 +384,42 @@ function put(event) {
       ev.getAttribute("data-column"),
       P
     );
-    if (sumLegal[8] === 0) canPut = false;
-    if (canPut) reverse(ev, sumLegal.slice(0, 8), P);
+    if (sumLegal[8] === 0) {
+      canPut = false;
+    }
+    if (canPut) {
+      counter++;
+      reverse(ev, sumLegal.slice(0, 8), P);
+    }
+    if (counter % 2 === 1) {
+      //  computers' turn.
+      setTimeout(computer, 2000);
+
+      function computer() {
+        let max = [0];
+        let maxIndex = -1;
+        for (let i = 0; i < 64; i++) {
+          if (
+            !(
+              cells[i].classList.value.includes("red") ||
+              cells[i].classList.value.includes("yellow")
+            )
+          ) {
+            let lgl = isLegal(
+              cells[i].getAttribute("data-row"),
+              cells[i].getAttribute("data-column"),
+              C
+            );
+            if (max[max.length - 1] < lgl[8]) {
+              max = lgl;
+              maxIndex = i;
+            }
+          }
+        }
+        counter++;
+        reverse(cells[maxIndex], max.slice(0, 8), C);
+      }
+    }
   }
 }
 
