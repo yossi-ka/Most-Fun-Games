@@ -7,15 +7,15 @@ window.onload = () => {
 //  navigation
 const user = document.querySelector(".user");
 const score = document.querySelector(".score");
-const cuurentUser = JSON.parse(localStorage.getItem("current-user"));
-user.textContent = cuurentUser.name;
-score.textContent += "  " + cuurentUser.score;
-// //  log out
-// const logOut = document.querySelector(".logOut");
-// logOut.addEventListener("click", () => {
-//   localStorage.removeItem("current-user");
-//   window.location.replace("/index.html");
-// });
+const currentUser = JSON.parse(localStorage.getItem("current-user"));
+user.textContent = currentUser.name;
+score.textContent += "  " + currentUser.score;
+//  log out
+const logOut = document.querySelector(".logOut");
+logOut.addEventListener("click", () => {
+  localStorage.removeItem("current-user");
+  window.location.replace("/index.html");
+});
 
 //  cells creating
 const board = document.querySelector(".board");
@@ -35,6 +35,9 @@ for (let i = 0; i < 8; i++) {
   }
 }
 
+const checkWinner = document.querySelector(".checkWinner");
+const reset = document.querySelector(".reset");
+
 //  i want to be:
 let P = "red"; //  persons' color
 let C = "yellow"; //  computers' color
@@ -44,6 +47,8 @@ const yellowBtn = howColor.querySelectorAll("button")[1];
 redBtn.addEventListener("click", () => {
   howColor.style.display = "none";
   board.style.display = "grid";
+  checkWinner.style.display = "inline-block";
+  reset.style.display = "inline-block";
   document.querySelector(".youre-color").style.display = "flex";
   document.querySelector(".hisColor").style.backgroundColor = "red";
 });
@@ -52,6 +57,8 @@ yellowBtn.addEventListener("click", () => {
   C = "red";
   howColor.style.display = "none";
   board.style.display = "grid";
+  checkWinner.style.display = "inline-block";
+  reset.style.display = "inline-block";
   document.querySelector(".youre-color").style.display = "flex";
   document.querySelector(".hisColor").style.backgroundColor = "yellow";
 });
@@ -347,7 +354,7 @@ function whoWon() {
   let painted = 0;
   let red = 0;
   let yellow = 0;
-  for (const slot of board) {
+  for (let slot of cells) {
     if (slot.classList.value.includes("red")) {
       painted++;
       red++;
@@ -356,17 +363,24 @@ function whoWon() {
       yellow++;
     }
   }
-  if (painted === 64) {
-    if ((red > yellow && P === "red") || (yellow > red && P === "yellow")) {
-      console.log("the person won the computer");
-    } else if (
-      (red < yellow && P === "red") ||
-      (yellow < red && P === "yellow")
-    ) {
-      console.log("the computer won the person");
-    } else {
-      console.log("draw!");
+  if ((red > yellow && P === "red") || (yellow > red && P === "yellow")) {
+    document.querySelector(".youWin").style.display = "block";
+    for (let i = 0; i < usersArr.length; i++) {
+      if (currentUser.email === usersArr[i].email) {
+        currentUser.score += 7;
+        usersArr[i].score += 7;
+        score.textContent = currentUser.score;
+        localStorage.setItem("users-fun", JSON.stringify(usersArr));
+        localStorage.setItem("current-user", JSON.stringify(currentUser));
+      }
     }
+  } else if (
+    (red < yellow && P === "red") ||
+    (yellow < red && P === "yellow")
+  ) {
+    document.querySelector(".youFailed").style.display = "block";
+  } else {
+    console.log("draw!");
   }
 }
 
@@ -422,6 +436,10 @@ function put(event) {
             }
           }
         }
+        if (max[max.length - 1] === 0) {
+          whoWon();
+          return;
+        }
         counter++;
         reverse(cells[maxIndex], max.slice(0, 8), C);
       }
@@ -431,5 +449,15 @@ function put(event) {
 
 //  reset
 document.querySelector(".reset").addEventListener("click", () => {
+  location.reload();
+});
+
+//  checks winner
+checkWinner.addEventListener("click", () => {
+  whoWon();
+});
+
+//  play again
+document.querySelector(".again").addEventListener("click", () => {
   location.reload();
 });
