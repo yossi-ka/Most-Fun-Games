@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/normalize.css" />
+    <link rel="stylesheet" href="../css/battleship.css" />
+    <title>Battleship</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <img src="../assents/images/logo-fun-games.png" alt="logo" />
+        <div class="nav-right">
+          <button class="logOut">Log out</button>
+          <div class="user"></div>
+          <div class="score">Total points:</div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="board"></div>
+    </main>
+    <aside></aside>
+    <footer>
+      <div class="introduction">
+        <h2>Battleship</h2>
+        <br />
+        <p>
+          <strong>Object: </strong> Find the enemy's submarine fleet and sink
+          them.
+        </p>
+        <p><strong>Instructions:</strong></p>
+        <ol>
+          <li>
+            1. Place all the ships on your board according to your choice,
+            horizontally or vertically, but not diagonally, and not adjacent.
+          </li>
+          <li>
+            2. Each in turn, tries to identify his opponent's fleet. After each
+            guess, mark the result on the opponent's board according to his
+            answer. If you missed, the square will be colored red, if you hit,
+            it will be colored yellow.
+          </li>
+          <li>
+            3. The winner is the player who "sunk" all his opponent's submarines
+            first.
+          </li>
+        </ol>
+      </div>
+    </footer>
+    <script src="../js/battleship.js"></script>
+  </body>
+</html>
