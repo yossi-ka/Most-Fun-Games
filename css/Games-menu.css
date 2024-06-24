@@ -94,6 +94,9 @@ main {
 .menu.reverse {
   background-color: rgb(242, 223, 242);
 }
+.menu.battleship {
+  background-color: rgb(225, 221, 255);
+}
 
 footer {
   background-color: #333;

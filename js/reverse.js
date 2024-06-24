@@ -17,7 +17,7 @@ logOut.addEventListener("click", () => {
   window.location.replace("/index.html");
 });
 
-//  cells creating
+//  creating cells
 const board = document.querySelector(".board");
 for (let i = 0; i < 8; i++) {
   for (let j = 0; j < 8; j++) {
@@ -25,7 +25,7 @@ for (let i = 0; i < 8; i++) {
     cell.classList.add("cell");
     cell.setAttribute("data-row", i);
     cell.setAttribute("data-column", j);
-    //  add color to the middle 4
+    //  add color to the middle 4 squares
     if ((i === 3 && j === 3) || (i === 4 && j === 4)) {
       cell.classList.add("red");
     } else if ((i === 3 && j === 4) || (i === 4 && j === 3)) {
@@ -39,8 +39,8 @@ const checkWinner = document.querySelector(".checkWinner");
 const reset = document.querySelector(".reset");
 
 //  i want to be:
-let P = "red"; //  persons' color
-let C = "yellow"; //  computers' color
+let P = "red"; //  person's color
+let C = "yellow"; //  computer's color
 const howColor = document.querySelector(".how-color");
 const redBtn = howColor.querySelectorAll("button")[0];
 const yellowBtn = howColor.querySelectorAll("button")[1];
@@ -68,8 +68,7 @@ function isLegal(i, j, color) {
   let control = [0, 0, 0, 0, 0, 0, 0, 0]; // controls the data of all directions
 
   let otherColor = () => {
-    if (color === "red") return "yellow";
-    else return "red";
+    return color === "red" ? "yellow" : "red";
   };
   let k = 0;
   for (k = 0; k < 64; k++) {
@@ -80,7 +79,7 @@ function isLegal(i, j, color) {
       break;
     }
   }
-  //  After the loop, i = row, and j = column
+  //  After the loop, i = row, j = column
 
   //  direction 0 = right.
   if (j <= "5") {
@@ -253,7 +252,7 @@ function isLegal(i, j, color) {
     return total + value;
   });
   control.push(sum);
-  return control; //  returns an array with 9 places, the last place is the "sum"
+  return control; //  returns an array with 9 places, the last place is the "sum" of the array
 }
 
 function reverse(ev, arr, clr) {
@@ -412,7 +411,7 @@ function put(event) {
       reverse(ev, sumLegal.slice(0, 8), P);
     }
     if (counter % 2 === 1) {
-      //  computers' turn.
+      //  computer's turn.
       setTimeout(computer, 2200);
 
       function computer() {
@@ -452,12 +451,15 @@ document.querySelector(".reset").addEventListener("click", () => {
   location.reload();
 });
 
-//  checks winner
+//  Check who won
 checkWinner.addEventListener("click", () => {
   whoWon();
 });
 
 //  play again
-document.querySelector(".again").addEventListener("click", () => {
+document.querySelectorAll(".again")[0].addEventListener("click", () => {
+  location.reload();
+});
+document.querySelectorAll(".again")[1].addEventListener("click", () => {
   location.reload();
 });
