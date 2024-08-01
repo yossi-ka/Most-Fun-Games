@@ -1,5 +1,7 @@
 // localStorage.removeItem("users-fun")
-const arr = [];
+const arr = [
+  { name: "יוסף", email: "abc1000@gmail.com", password: "123456", score: 0 },
+];
 if (localStorage.getItem("current-user") === null) {
   localStorage.setItem("current-user", JSON.stringify(arr));
 }
