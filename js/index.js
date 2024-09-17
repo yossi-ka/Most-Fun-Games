@@ -1,17 +1,17 @@
 // localStorage.removeItem("users-fun")
 const arr = [
-  {
-    name: "יוסף",
-    email: "abc1000@gmail.com",
-    password: "123456",
-    score: 0,
-  },
+  // {
+  //   name: "יוסף",
+  //   email: "abc1000@gmail.com",
+  //   password: "123456",
+  //   score: 0,
+  // },
 ];
 
 if (localStorage.getItem("current-user") === null) {
   localStorage.setItem("current-user", JSON.stringify(arr));
 }
-if (localStorage.getItem("users-fun") === null) {
+if (localStorage.getItem) {
   localStorage.setItem("users-fun", JSON.stringify(arr));
 }
 const sign = document.querySelector(".sign-up");
@@ -46,7 +46,8 @@ mail.addEventListener("input", () => {
 });
 //  signs-up the new customer
 if (available) {
-  forms[1].addEventListener("submit", () => {
+  forms[1].addEventListener("submit", (e) => {
+    e.preventDefault()
     const inputs = forms[1].querySelectorAll("input");
     const usersArr = JSON.parse(localStorage.getItem("users-fun"));
     const newCustomer = {
